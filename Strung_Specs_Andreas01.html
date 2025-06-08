@@ -1,41 +1,57 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Strung Specs – Andreas 01</title>
+  <title>Strung Specs</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
-      max-width: 500px;
-      margin: auto;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
     }
+
     h1 {
-      color: #2c3e50;
+      font-size: 24px;
+      margin-bottom: 20px;
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
+
+    .spec-list {
+      max-width: 600px;
     }
-    td {
-      padding: 6px;
-      vertical-align: top;
+
+    .spec-item {
+      margin-bottom: 10px;
     }
+
     .label {
       font-weight: bold;
-      width: 160px;
+      display: inline-block;
+      width: 140px;
+    }
+
+    .value {
+      display: inline-block;
     }
   </style>
 </head>
 <body>
-  <h1>🎾 Strung Specs</h1>
-  <table>
-    <tr><td class="label">Racket ID:</td><td>Andreas 01</td></tr>
-    <tr><td class="label">Weight:</td><td>335 g</td></tr>
-    <tr><td class="label">Swingweight:</td><td>332 kg·cm²</td></tr>
-    <tr><td class="label">Balance Point:</td><td>328 mm</td></tr>
-  </table>
+  <div class="spec-list">
+    <h1>Strung Specs</h1>
+
+    <div class="spec-item">
+      <span class="label">Racket ID:</span><span class="value">Andreas 01</span>
+    </div>
+    <div class="spec-item">
+      <span class="label">Weight:</span><span class="value">335 g</span>
+    </div>
+    <div class="spec-item">
+      <span class="label">Swingweight:</span><span class="value">332 kg·cm²</span>
+    </div>
+    <div class="spec-item">
+      <span class="label">Balance Point:</span><span class="value">328 mm</span>
+    </div>
+  </div>
 </body>
 </html>
