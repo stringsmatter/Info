@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Racket Info</title>
+  <title>Racquet Info</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root { color-scheme: light dark; }
@@ -51,7 +51,8 @@
       display: inline-block;
       color: #1e88e5;
       font-family: monospace;
-      padding-left: 4px;
+      padding-left: 8px;
+      word-break: break-word;
     }
     @media (max-width: 600px) {
       .label, .value {
@@ -60,8 +61,23 @@
         padding-left: 0;
       }
       .spec-item {
-        margin-bottom: 20px;
+        margin-bottom: 24px;
       }
+      body {
+        padding: 16px;
+      }
+    }
+    @media (max-width: 480px) {
+      body {
+        font-size: 18px;
+      }
+    }
+    h1 {
+      position: sticky;
+      top: 0;
+      background: inherit;
+      z-index: 10;
+      padding-top: 12px;
     }
     @media (prefers-color-scheme: dark) {
       body { background-color: #121212; color: #eee; }
@@ -75,29 +91,30 @@
 </head>
 <body>
   <div class="spec-card">
-    <h1>Racket Info</h1>
-    <div class="spec-item"><span class="label">Racket ID:</span><span class="value">Andreas 01</span></div>
-    <div class="spec-item"><span class="label">Modell:</span><span class="value">Wilson Blade 98 V8</span></div>
-    <div class="spec-item"><span class="label">In use since:</span><span class="value">March 2023</span></div>
+    <h1>Racquet Info</h1>
+    <div class="spec-item"><span class="label">Racquet ID</span><span class="value"></span></div>
+    <div class="spec-item"><span class="label">Modell</span><span class="value"></span></div>
+    <div class="spec-item"><span class="label">First used</span><span class="value"></span></div>
 
     <h2>Factory Specs</h2>
-    <div class="spec-item"><span class="label">Headsize:</span><span class="value">98&nbsp;inch</span></div>
-    <div class="spec-item"><span class="label">String Pattern:</span><span class="value">16x19</span></div>
-    <div class="spec-item"><span class="label">Unstrung Weight:</span><span class="value">305&nbsp;g</span></div>
-    <div class="spec-item"><span class="label">Stiffness:</span><span class="value">61</span></div>
-    <div class="spec-item"><span class="label">Beam Width:</span><span class="value">21&nbsp;mm&nbsp;/&nbsp;21&nbsp;mm&nbsp;/&nbsp;21&nbsp;mm</span></div>
-    <div class="spec-item"><span class="label">Length:</span><span class="value">68.58&nbsp;cm</span></div>
+    <div class="spec-item"><span class="label">Head Size</span><span class="value">98&nbsp;in²</span></div>
+    <div class="spec-item"><span class="label">String Pattern</span><span class="value">16x19</span></div>
+    <div class="spec-item"><span class="label">Unstrung Weight</span><span class="value">&nbsp;g</span></div>
+    <div class="spec-item"><span class="label">Stiffness</span><span class="value"></span></div>
+    <div class="spec-item"><span class="label">Beam</span><span class="value">&nbsp;mm&nbsp;/&nbsp;&nbsp;mm&nbsp;/&nbsp;&nbsp;mm</span></div>
+    <div class="spec-item"><span class="label">Length</span><span class="value">undefined&nbsp;cm</span></div>
 
     <h2>Customization</h2>
-    <div class="spec-item"><span class="label">Mains / Crosses:</span><span class="value">Hyper G 1.25 / Hyper G Round 1.25</span></div>
-    <div class="spec-item"><span class="label">Grip:</span><span class="value">Wilson Leder + Pro Overgrip</span></div>
-    <div class="spec-item"><span class="label">Dampener:</span><span class="value">no</span></div>
-    <div class="spec-item"><span class="label">Added Weight:</span><span class="value">2.5 g @12</span></div>
+    <div class="spec-item"><span class="label">Mains / Crosses</span><span class="value">hyper g</span></div>
+    <div class="spec-item"><span class="label">Grip Size</span><span class="value"></span></div>
+    <div class="spec-item"><span class="label">Grip</span><span class="value"></span></div>
+    <div class="spec-item"><span class="label">Dampener</span><span class="value"></span></div>
+    <div class="spec-item"><span class="label">Added Weight</span><span class="value"></span></div>
 
     <h2>Measured Strung Specs</h2>
-    <div class="spec-item"><span class="label">Weight:</span><span class="value">335.1&nbsp;g</span></div>
-    <div class="spec-item"><span class="label">Swingweight:</span><span class="value">331.4&nbsp;kg·cm²</span></div>
-    <div class="spec-item"><span class="label">Balance:</span><span class="value">325&nbsp;mm</span></div>
+    <div class="spec-item"><span class="label">Weight</span><span class="value">2&nbsp;g</span></div>
+    <div class="spec-item"><span class="label">Swingweight</span><span class="value">&nbsp;kg·cm²</span></div>
+    <div class="spec-item"><span class="label">Balance</span><span class="value">&nbsp;mm</span></div>
   </div>
 </body>
 </html>
