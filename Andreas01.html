@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Racket Info</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      color-scheme: light dark;
-    }
-
+    :root { color-scheme: light dark; }
     body {
       font-family: 'Inter', sans-serif;
       font-size: 17px;
@@ -20,7 +17,6 @@
       display: flex;
       justify-content: center;
     }
-
     .spec-card {
       background-color: white;
       padding: 24px;
@@ -28,15 +24,12 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
       max-width: 700px;
       width: 100%;
-      position: relative;
     }
-
     h1 {
       font-size: 26px;
       margin-bottom: 24px;
       color: #1a1a1a;
     }
-
     h2 {
       font-size: 20px;
       margin-top: 40px;
@@ -45,25 +38,21 @@
       border-left: 4px solid #1e88e5;
       padding-left: 12px;
     }
-
     .spec-item {
       margin-bottom: 12px;
     }
-
     .label {
       font-weight: 700;
       display: inline-block;
       width: 160px;
       color: #555;
     }
-
     .value {
       display: inline-block;
       color: #1e88e5;
       font-family: monospace;
       padding-left: 4px;
     }
-
     @media (max-width: 600px) {
       .label, .value {
         display: block;
@@ -74,57 +63,41 @@
         margin-bottom: 20px;
       }
     }
-
     @media (prefers-color-scheme: dark) {
-      body {
-        background-color: #121212;
-        color: #eee;
-      }
-      .spec-card {
-        background-color: #1e1e1e;
-        box-shadow: none;
-      }
-      .label {
-        color: #aaa;
-      }
-      .value {
-        color: #4fc3f7;
-      }
-      h1 {
-        color: #f0f0f0;
-      }
-      h2 {
-        color: #ddd;
-      }
+      body { background-color: #121212; color: #eee; }
+      .spec-card { background-color: #1e1e1e; box-shadow: none; }
+      .label { color: #aaa; }
+      .value { color: #4fc3f7; }
+      h1 { color: #f0f0f0; }
+      h2 { color: #ddd; }
     }
   </style>
 </head>
 <body>
   <div class="spec-card">
     <h1>Racket Info</h1>
-
     <div class="spec-item"><span class="label">Racket ID:</span><span class="value">Andreas 01</span></div>
-    <div class="spec-item"><span class="label">Modell:</span><span class="value">Blade 98 V8 (2021)</span></div>
+    <div class="spec-item"><span class="label">Modell:</span><span class="value">Wilson Blade 98 V8</span></div>
     <div class="spec-item"><span class="label">In use since:</span><span class="value">March 2023</span></div>
 
     <h2>Factory Specs</h2>
     <div class="spec-item"><span class="label">Headsize:</span><span class="value">98&nbsp;inch</span></div>
     <div class="spec-item"><span class="label">String Pattern:</span><span class="value">16x19</span></div>
     <div class="spec-item"><span class="label">Unstrung Weight:</span><span class="value">305&nbsp;g</span></div>
-    <div class="spec-item"><span class="label">Stiffness:</span><span class="value">69</span></div>
+    <div class="spec-item"><span class="label">Stiffness:</span><span class="value">61</span></div>
     <div class="spec-item"><span class="label">Beam Width:</span><span class="value">21&nbsp;mm&nbsp;/&nbsp;21&nbsp;mm&nbsp;/&nbsp;21&nbsp;mm</span></div>
     <div class="spec-item"><span class="label">Length:</span><span class="value">68.58&nbsp;cm</span></div>
 
     <h2>Customization</h2>
     <div class="spec-item"><span class="label">Mains / Crosses:</span><span class="value">Hyper G 1.25 / Hyper G Round 1.25</span></div>
-    <div class="spec-item"><span class="label">Grip:</span><span class="value">Wilson Premium Leather + Wilson Pro Overgrip</span></div>
+    <div class="spec-item"><span class="label">Grip:</span><span class="value">Wilson Leder + Pro Overgrip</span></div>
     <div class="spec-item"><span class="label">Dampener:</span><span class="value">no</span></div>
-    <div class="spec-item"><span class="label">Added Weight:</span><span class="value">&gt;2.5&nbsp;g&nbsp;@&nbsp;12</span></div>
+    <div class="spec-item"><span class="label">Added Weight:</span><span class="value">2.5 g @12</span></div>
 
     <h2>Measured Strung Specs</h2>
-    <div class="spec-item"><span class="label">Weight:</span><span class="value">335&nbsp;g</span></div>
-    <div class="spec-item"><span class="label">Swingweight:</span><span class="value">332&nbsp;kg·cm²</span></div>
-    <div class="spec-item"><span class="label">Balance:</span><span class="value">328&nbsp;mm</span></div>
+    <div class="spec-item"><span class="label">Weight:</span><span class="value">335.1&nbsp;g</span></div>
+    <div class="spec-item"><span class="label">Swingweight:</span><span class="value">331.4&nbsp;kg·cm²</span></div>
+    <div class="spec-item"><span class="label">Balance:</span><span class="value">325&nbsp;mm</span></div>
   </div>
 </body>
 </html>
