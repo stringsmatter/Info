@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -25,16 +26,22 @@
       max-width: 700px;
       width: 100%;
     }
-    h1 { font-size: 26px; margin-bottom: 24px; color: #1a1a1a; }
+    h1 {
+      font-size: 26px;
+      margin-bottom: 24px;
+      color: #1a1a1a;
+    }
     h2 {
       font-size: 20px;
       margin-top: 40px;
       margin-bottom: 12px;
       color: #333;
-      border-left: 4px solid #1e88e5;
+      border-left: 4px solid #888;
       padding-left: 12px;
     }
-    .spec-item { margin-bottom: 12px; }
+    .spec-item {
+      margin-bottom: 12px;
+    }
     .label {
       font-weight: 700;
       display: inline-block;
@@ -46,6 +53,28 @@
       color: #1e88e5;
       font-family: monospace;
       padding-left: 8px;
+    }
+    @media (max-width: 600px) {
+      .label, .value {
+        display: block;
+        width: auto;
+        padding-left: 0;
+      }
+      .spec-item {
+        margin-bottom: 20px;
+      }
+    }
+    @media (prefers-color-scheme: dark) {
+      body { background-color: #121212; color: #eee; }
+      .spec-card { background-color: #1e1e1e; box-shadow: none; }
+      .label { color: #aaa; }
+      .value { color: #4fc3f7; }
+      h1 { color: #f0f0f0; }
+      h2 { color: #ddd; border-left: 4px solid #888; }
+    }
+  
+    
+    .value {
       word-break: break-word;
     }
     @media (max-width: 600px) {
@@ -54,11 +83,17 @@
         width: auto;
         padding-left: 0;
       }
-      .spec-item { margin-bottom: 24px; }
-      body { padding: 16px; }
+      .spec-item {
+        margin-bottom: 24px;
+      }
+      body {
+        padding: 16px;
+      }
     }
     @media (max-width: 480px) {
-      body { font-size: 18px; }
+      body {
+        font-size: 18px;
+      }
     }
     h1 {
       position: sticky;
@@ -67,15 +102,7 @@
       z-index: 10;
       padding-top: 12px;
     }
-    @media (prefers-color-scheme: dark) {
-      body { background-color: #121212; color: #eee; }
-      .spec-card { background-color: #1e1e1e; box-shadow: none; }
-      .label { color: #aaa; }
-      .value { color: #4fc3f7; }
-      h1 { color: #f0f0f0; }
-      h2 { color: #ddd; }
-    }
-  </style>
+    </style>
 </head>
 <body>
   <div class="spec-card">
@@ -95,7 +122,7 @@
     <h2>Customization</h2>
     <div class="spec-item"><span class="label">Mains / Crosses</span><span class="value">Hyper G 1.25 / Hyper G Round 1.25</span></div>
     <div class="spec-item"><span class="label">Grip Size</span><span class="value">3</span></div>
-    <div class="spec-item"><span class="label">Grip</span><span class="value">Wilson Leather + Pro Overgrip</span></div>
+    <div class="spec-item"><span class="label">Grip</span><span class="value">Wilson Leder + Pro Overgrip</span></div>
     <div class="spec-item"><span class="label">Dampener</span><span class="value">no</span></div>
     <div class="spec-item"><span class="label">Added Weight</span><span class="value">2.5 g @12</span></div>
 
