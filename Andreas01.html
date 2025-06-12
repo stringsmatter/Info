@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Racquet Info</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Racquet Info</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
     :root { color-scheme: light dark; }
     body {
       font-family: 'Inter', sans-serif;
@@ -44,7 +45,7 @@
     .label {
       font-weight: 700;
       display: inline-block;
-      width: 160px;
+      width: 190px;
       color: #555;
     }
     .value {
@@ -52,28 +53,6 @@
       color: #1e88e5;
       font-family: monospace;
       padding-left: 8px;
-    }
-    @media (max-width: 600px) {
-      .label, .value {
-        display: block;
-        width: auto;
-        padding-left: 0;
-      }
-      .spec-item {
-        margin-bottom: 20px;
-      }
-    }
-    @media (prefers-color-scheme: dark) {
-      body { background-color: #121212; color: #eee; }
-      .spec-card { background-color: #1e1e1e; box-shadow: none; }
-      .label { color: #aaa; }
-      .value { color: #4fc3f7; }
-      h1 { color: #f0f0f0; }
-      h2 { color: #ddd; border-left: 4px solid #888; }
-    }
-  
-    
-    .value {
       word-break: break-word;
     }
     @media (max-width: 600px) {
@@ -94,41 +73,279 @@
         font-size: 18px;
       }
     }
+    @media (prefers-color-scheme: dark) {
+      body { background-color: #121212; color: #eee; }
+      .spec-card { background-color: #1e1e1e; box-shadow: none; }
+      .label { color: #aaa; }
+      .value { color: #4fc3f7; }
+      h1 { color: #f0f0f0; }
+      h2 { color: #ddd; border-left: 4px solid #888; }
+    }
     h1 {
-      position: sticky;
+      
       top: 0;
       background: inherit;
       z-index: 10;
       padding-top: 12px;
     }
-    </style>
-</head>
+  </style>
+<style>
+.tooltip-icon {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  cursor: pointer;
+  position: relative;
+}
+.tooltip-label {
+  
+}
+.tooltip-heading {
+  gap: 1px;
+}
+.label-with-icon {
+  display: inline-flex;
+  align-items: baseline;
+  
+}
+.tooltip-icon svg {
+  pointer-events: none;
+}
+.tooltip-icon .tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  width: max-content;
+  max-width: 260px;
+  font-size: 13px;
+  font-weight: 400;
+  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+  line-height: 1.4;
+  border-radius: 6px;
+  padding: 8px 10px;
+  position: absolute;
+  z-index: 100;
+  top: 20px;
+  left: 0;
+  background-color: #f0f0f0;
+  color: #111;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: opacity 0.2s ease;
+}
+@media (prefers-color-scheme: dark) {
+  .tooltip-icon .tooltip-text {
+    background-color: #2a2a2a;
+    color: #eee;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+}
+}
+.tooltip-icon:focus-within .tooltip-text,
+.tooltip-icon:active .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+.tooltip-icon button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.spec-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 20px;
+}
+/* .label-block removed */ {
+  display: inline-flex;
+  align-items: center;
+  
+  min-width: 160px;
+  font-weight: 700;
+  color: #999;
+}
+.value {
+  color: #55aaff;
+}
+
+
+.tooltip-icon button:focus + .tooltip-text,
+.tooltip-icon button:active + .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+@media (max-width: 600px) {
+  .spec-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: baseline;
+  }
+
+  .label {
+    width: 190px;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  .value {
+    padding-left: 0;
+  }
+}
+
+
+@media (max-width: 800px) {
+  .spec-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    gap: 20px;
+  }
+
+  .label {
+    flex: 0 0 190px;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  .value {
+    flex: 1;
+    display: inline-block;
+    padding-left: 0;
+  }
+}
+
+
+.value {
+  white-space: nowrap;
+}
+
+
+.value {
+  white-space: normal;
+  overflow-x: visible;
+  max-width: 100%;
+}
+
+
+.value {
+  display: inline-block;
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+
+@media (max-width: 800px) {
+  .spec-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    column-gap: 20px;
+  }
+
+  .label {
+    flex: 0 0 170px;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  .value {
+    flex: 1 1 auto;
+    min-width: 0;
+    word-break: normal;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+}
+
+
+.label {
+  white-space: nowrap;
+}
+
+
+.tooltip-icon .tooltip-text {
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 260px;
+}
+</style></head>
 <body>
-  <div class="spec-card">
-    <h1>Racquet Info</h1>
-    <div class="spec-item"><span class="label">Racquet ID</span><span class="value">Andreas 01</span></div>
-    <div class="spec-item"><span class="label">Modell</span><span class="value">Wilson Blade 98 V8</span></div>
-    <div class="spec-item"><span class="label">First used</span><span class="value">March 2023</span></div>
-
-    <h2>Factory Specs</h2>
-    <div class="spec-item"><span class="label">Head Size</span><span class="value">98&nbsp;in²</span></div>
-    <div class="spec-item"><span class="label">String Pattern</span><span class="value">16x19</span></div>
-    <div class="spec-item"><span class="label">Unstrung Weight</span><span class="value">305&nbsp;g</span></div>
-    <div class="spec-item"><span class="label">Stiffness</span><span class="value">61</span></div>
-    <div class="spec-item"><span class="label">Beam</span><span class="value">21&nbsp;mm&nbsp;/&nbsp;21&nbsp;mm&nbsp;/&nbsp;21&nbsp;mm</span></div>
-    <div class="spec-item"><span class="label">Length</span><span class="value">68.58&nbsp;cm</span></div>
-
-    <h2>Customization</h2>
-    <div class="spec-item"><span class="label">Mains / Crosses</span><span class="value">Hyper G 1.25 / Hyper G Round 1.25</span></div>
-    <div class="spec-item"><span class="label">Grip Size</span><span class="value">3</span></div>
-    <div class="spec-item"><span class="label">Grip</span><span class="value">Wilson Leder + Pro Overgrip</span></div>
-    <div class="spec-item"><span class="label">Dampener</span><span class="value">no</span></div>
-    <div class="spec-item"><span class="label">Added Weight</span><span class="value">2.5 g @12</span></div>
-
-    <h2>Measured Strung Specs</h2>
-    <div class="spec-item"><span class="label">Weight</span><span class="value">335.1&nbsp;g</span></div>
-    <div class="spec-item"><span class="label">Swingweight</span><span class="value">331.4&nbsp;kg·cm²</span></div>
-    <div class="spec-item"><span class="label">Balance</span><span class="value">325&nbsp;mm</span></div>
-  </div>
+<div class="spec-card">
+<h1>Racquet Info</h1>
+<div class="spec-item"><span class="label">Racquet ID</span><span class="value">Andreas 01</span></div>
+<div class="spec-item"><span class="label">Modell</span><span class="value">Wilson Blade 98 V8</span></div>
+<div class="spec-item"><span class="label">First used</span><span class="value">March 2023</span></div>
+<h2>General Specifications</h2>
+<div class="spec-item"><span class="label">Head Size</span><span class="value">98 in²</span></div>
+<div class="spec-item"><span class="label">String Pattern</span><span class="value">16x19</span></div>
+<div class="spec-item"><span class="label">Unstrung Weight<span class="tooltip-icon tooltip-label" style="margin-left: 3px;" tabindex="0"><button type="button">
+<svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="12" x2="12" y1="16" y2="12"></line>
+<line x1="12" x2="12" y1="8" y2="8"></line>
+</svg>
+</button><span class="tooltip-text">Factory specification only. Actual weight may vary due to manufacturing tolerances (±7 g typical).</span></span></span><span class="value">305 g</span></div>
+<div class="spec-item"><span class="label">Stiffness<span class="tooltip-icon tooltip-label" style="margin-left: 3px;" tabindex="0"><button type="button">
+<svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="12" x2="12" y1="16" y2="12"></line>
+<line x1="12" x2="12" y1="8" y2="8"></line>
+</svg>
+</button><span class="tooltip-text">Measured by Tennis Warehouse University (TWU). Babolat RA scale – higher values indicate a stiffer frame and less flex at impact.</span></span></span><span class="value">61</span></div>
+<div class="spec-item"><span class="label">Beam</span><span class="value">21 mm / 21 mm / 21 mm</span></div>
+<div class="spec-item"><span class="label">Length</span><span class="value">68.58 cm</span></div>
+<h2>Customization</h2><div class="spec-item"><span class="label">Mains / Crosses</span><span class="value">Hyper G 1.25 / Hyper G Round 1.25</span></div><div class="spec-item"><span class="label">Replacement Grip</span><span class="value">Wilson Leather</span></div><div class="spec-item"><span class="label">Overgrip</span><span class="value">Wilson Pro</span></div><div class="spec-item"><span class="label">Dampener</span><span class="value">no</span></div><div class="spec-item"><span class="label">Added Weight</span><span class="value">2.5 g @12</span></div>
+<h2 style="display: flex; align-items: center; gap: 8px;">
+      Measured Unstrung Specs
+      
+<span class="tooltip-icon tooltip-heading" tabindex="0"><button type="button">
+<svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="12" x2="12" y1="16" y2="12"></line>
+<line x1="12" x2="12" y1="8" y2="8"></line>
+</svg>
+</button><span class="tooltip-text">Frame-only measurement: no strings or overgrip, but includes replacement grip of choice and added weight.</span></span></h2>
+<div class="spec-item"><span class="label">Weight</span><span class="value">313.5 g</span></div>
+<div class="spec-item"><span class="label">Swingweight<span class="tooltip-icon tooltip-label" style="margin-left: 3px;" tabindex="0"><button type="button">
+<svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="12" x2="12" y1="16" y2="12"></line>
+<line x1="12" x2="12" y1="8" y2="8"></line>
+</svg>
+</button><span class="tooltip-text">Swingweight is the racquet’s moment of inertia relative to the axis near the handle. A higher swingweight increases stability and energy transfer on impact, but requires more effort to accelerate the racquet.</span></span></span><span class="value">300.85 kg·cm²</span></div>
+<div class="spec-item"><span class="label">Balance</span><span class="value">319 mm</span></div>
+<h2 style="display: flex; align-items: center; gap: 8px;">Measured Strung Specs<span class="tooltip-icon tooltip-heading" tabindex="0"><button type="button">
+<svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="12" x2="12" y1="16" y2="12"></line>
+<line x1="12" x2="12" y1="8" y2="8"></line>
+</svg>
+</button><span class="tooltip-text">Fully customized match-ready setup.</span></span></h2>
+<div class="spec-item"><span class="label">Weight</span><span class="value">335.1 g</span></div>
+<div class="spec-item"><span class="label">Swingweight<span class="tooltip-icon tooltip-label" style="margin-left: 3px;" tabindex="0"><button type="button">
+<svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="12" x2="12" y1="16" y2="12"></line>
+<line x1="12" x2="12" y1="8" y2="8"></line>
+</svg>
+</button><span class="tooltip-text">Swingweight is the racquet’s moment of inertia relative to the axis near the handle. A higher swingweight increases stability and energy transfer on impact, but requires more effort to accelerate the racquet.</span></span></span><span class="value">331.4 kg·cm²</span></div>
+<div class="spec-item"><span class="label">Balance</span><span class="value">325 mm</span></div>
+</div>
 </body>
 </html>
