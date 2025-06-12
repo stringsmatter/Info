@@ -106,8 +106,8 @@
 .label-with-icon {
   display: inline-flex;
   align-items: baseline;
-  /* Reduzierter Abstand */
-  gap: 4px; /* Von 6px auf 4px reduziert */
+  /* Reduzierter Abstand, wie in der bereitgestellten Datei */
+  gap: 4px; /* */
 }
 .tooltip-icon svg {
   pointer-events: none;
@@ -117,20 +117,41 @@
   opacity: 0;
   width: max-content;
   max-width: 260px;
-  /* Die Schriftstärke wurde auf 300 (Light) gesetzt */
-  font-weight: 300;
+  /* Die Schriftstärke wurde auf 300 (Light) gesetzt, wie in der bereitgestellten Datei */
+  font-weight: 300; /* */
   font-size: 13px;
   border-radius: 6px;
   padding: 8px 10px;
   position: absolute;
   z-index: 100;
   top: 20px;
-  left: 0;
+  left: 0; /* Standardposition: am linken Rand des Icons */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: opacity 0.2s ease;
   background-color: #f9f9f9;
   color: #111;
 }
+
+/* Responsivität für Tooltips */
+@media (max-width: 768px) {
+  .tooltip-icon .tooltip-text {
+    left: unset; /* Deaktiviert die linke Ausrichtung */
+    right: -24px; /* Verschiebt den Tooltip um 24px vom rechten Rand des Icons nach links */
+    max-width: calc(100vw - 48px); /* Nimmt die Viewport-Breite - 2 * Body-Padding (24px) */
+    width: auto; /* Lässt die Breite sich anpassen */
+    box-sizing: border-box; /* Stellt sicher, dass Padding und Border in der Breite enthalten sind */
+  }
+  /* Optional: Wenn Tooltip auch am linken Rand überlappen könnte, wenn das Icon ganz links ist */
+  /* Dies ist eine Fallback-Regel für den seltenen Fall, dass der Tooltip zu breit ist und links überlappen würde */
+  .tooltip-icon .tooltip-text.adjust-left {
+      left: 16px; /* Ein fester Abstand vom linken Rand des Viewports */
+      right: unset;
+      transform: unset;
+      max-width: calc(100vw - 32px); /* Viewport-Breite - 2 * 16px Padding */
+  }
+}
+
+
 @media (prefers-color-scheme: dark) {
   .tooltip-icon .tooltip-text {
     background-color: #222;
@@ -156,70 +177,78 @@
 <div class="spec-item"><span class="label">Racquet ID</span><span class="value">Andreas 01</span></div>
 <div class="spec-item"><span class="label">Modell</span><span class="value">Wilson Blade 98 V8</span></div>
 <div class="spec-item"><span class="label">First used</span><span class="value">March 2023</span></div>
+<section>
 <h2>General Specifications</h2>
 <div class="spec-item"><span class="label">Head Size</span><span class="value">98 in²</span></div>
 <div class="spec-item"><span class="label">String Pattern</span><span class="value">16x19</span></div>
 <div class="spec-item">
 <span class="label">
 <span class="label-with-icon">Unstrung Weight
-<span class="tooltip-icon tooltip-label" tabindex="0"><button type="button">
+<span class="tooltip-icon tooltip-label" tabindex="0" aria-describedby="uw-tooltip"><button type="button" aria-label="Informationen zum unbesaiteten Gewicht">
 <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
 <circle cx="12" cy="12" r="10"></circle>
 <line x1="12" x2="12" y1="16" y2="12"></line>
 <line x1="12" x2="12" y1="8" y2="8"></line>
 </svg>
-</button><span class="tooltip-text">Factory specification only. Actual weight may vary due to manufacturing tolerances (±7 g typical).</span></span></span></span><span class="value">305 g</span></div>
+</button><span class="tooltip-text" id="uw-tooltip" role="tooltip">Factory specification only. Actual weight may vary due to manufacturing tolerances (±7 g typical).</span></span></span></span><span class="value">305 g</span></div>
 <div class="spec-item">
 <span class="label">
-<span class="label-with-icon">Stiffness<span class="tooltip-icon tooltip-label" tabindex="0"><button type="button">
+<span class="label-with-icon">Stiffness<span class="tooltip-icon tooltip-label" tabindex="0" aria-describedby="stiffness-tooltip"><button type="button" aria-label="Informationen zur Steifigkeit">
 <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
 <circle cx="12" cy="12" r="10"></circle>
 <line x1="12" x2="12" y1="16" y2="12"></line>
 <line x1="12" x2="12" y1="8" y2="8"></line>
 </svg>
-</button><span class="tooltip-text">Measured by Tennis Warehouse University (TWU). Babolat RA scale – higher values indicate a stiffer frame and less flex at impact.</span></span></span></span><span class="value">61</span></div>
+</button><span class="tooltip-text" id="stiffness-tooltip" role="tooltip">Measured by Tennis Warehouse University (TWU). Babolat RA scale – higher values indicate a stiffer frame and less flex at impact.</span></span></span></span><span class="value">61</span></div>
 <div class="spec-item"><span class="label">Beam</span><span class="value">21 mm / 21 mm / 21 mm</span></div>
 <div class="spec-item"><span class="label">Length</span><span class="value">68.58 cm</span></div>
+</section>
+<section>
 <h2>Customization</h2><div class="spec-item"><span class="label">Mains / Crosses</span><span class="value">Hyper G 1.25 / Hyper G Round 1.25</span></div><div class="spec-item"><span class="label">Replacement Grip</span><span class="value">Wilson Leather</span></div><div class="spec-item"><span class="label">Overgrip</span><span class="value">Wilson Pro</span></div><div class="spec-item"><span class="label">Dampener</span><span class="value">no</span></div><div class="spec-item"><span class="label">Added Weight</span><span class="value">2.5 g @12</span></div>
-<h2 style="display: flex; align-items: center; /* Reduzierter Abstand */ gap: 6px;">
+</section>
+<section>
+<h2 style="display: flex; align-items: center; gap: 6px;">
       Measured Unstrung Specs
       
-<span class="tooltip-icon tooltip-heading" tabindex="0"><button type="button">
+<span class="tooltip-icon tooltip-heading" tabindex="0" aria-describedby="mu-specs-tooltip"><button type="button" aria-label="Informationen zu gemessenen unbesaiteten Spezifikationen">
 <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
 <circle cx="12" cy="12" r="10"></circle>
 <line x1="12" x2="12" y1="16" y2="12"></line>
 <line x1="12" x2="12" y1="8" y2="8"></line>
 </svg>
-</button><span class="tooltip-text">Frame-only measurement: no strings or overgrip, but includes replacement grip of choice and added weight.</span></span></h2>
+</button><span class="tooltip-text" id="mu-specs-tooltip" role="tooltip">Frame-only measurement: no strings or overgrip, but includes replacement grip of choice and added weight.</span></span></h2>
 <div class="spec-item"><span class="label">Weight</span><span class="value">313.5 g</span></div>
 <div class="spec-item">
 <span class="label">
-<span class="label-with-icon">Swingweight<span class="tooltip-icon tooltip-label" tabindex="0"><button type="button">
+<span class="label-with-icon">Swingweight<span class="tooltip-icon tooltip-label" tabindex="0" aria-describedby="sw-unstrung-tooltip"><button type="button" aria-label="Informationen zum Schwunggewicht (unbesaitet)">
 <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
 <circle cx="12" cy="12" r="10"></circle>
 <line x1="12" x2="12" y1="16" y2="12"></line>
 <line x1="12" x2="12" y1="8" y2="8"></line>
 </svg>
-</button><span class="tooltip-text">Swingweight is the racquet’s moment of inertia relative to the axis near the handle. A higher swingweight increases stability and energy transfer on impact, but requires more effort to accelerate the racquet.</span></span></span></span><span class="value">300.9 kg·cm²</span></div>
+</button><span class="tooltip-text" id="sw-unstrung-tooltip" role="tooltip">Swingweight is the racquet’s moment of inertia relative to the axis near the handle. A higher swingweight increases stability and energy transfer on impact, but requires more effort to accelerate the racquet.</span></span></span></span><span class="value">300.9 kg·cm²</span></div>
 <div class="spec-item"><span class="label">Balance</span><span class="value">319 mm</span></div>
-<h2 style="display: flex; align-items: center; /* Reduzierter Abstand */ gap: 6px;">Measured Strung Specs<span class="tooltip-icon tooltip-heading" tabindex="0"><button type="button">
+</section>
+<section>
+<h2 style="display: flex; align-items: center; gap: 6px;">Measured Strung Specs<span class="tooltip-icon tooltip-heading" tabindex="0" aria-describedby="ms-specs-tooltip"><button type="button" aria-label="Informationen zu gemessenen besaiteten Spezifikationen">
 <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
 <circle cx="12" cy="12" r="10"></circle>
 <line x1="12" x2="12" y1="16" y2="12"></line>
 <line x1="12" x2="12" y1="8" y2="8"></line>
 </svg>
-</button><span class="tooltip-text">Fully customized match-ready setup.</span></span></h2>
+</button><span class="tooltip-text" id="ms-specs-tooltip" role="tooltip">Fully customized match-ready setup.</span></span></h2>
 <div class="spec-item"><span class="label">Weight</span><span class="value">335.1 g</span></div>
 <div class="spec-item">
 <span class="label">
-<span class="label-with-icon">Swingweight<span class="tooltip-icon tooltip-label" tabindex="0"><button type="button">
+<span class="label-with-icon">Swingweight<span class="tooltip-icon tooltip-label" tabindex="0" aria-describedby="sw-strung-tooltip"><button type="button" aria-label="Informationen zum Schwunggewicht (besaitet)">
 <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
 <circle cx="12" cy="12" r="10"></circle>
 <line x1="12" x2="12" y1="16" y2="12"></line>
 <line x1="12" x2="12" y1="8" y2="8"></line>
 </svg>
-</button><span class="tooltip-text">Swingweight is the racquet’s moment of inertia relative to the axis near the handle. A higher swingweight increases stability and energy transfer on impact, but requires more effort to accelerate the racquet.</span></span></span></span><span class="value">331.4 kg·cm²</span></div>
+</button><span class="tooltip-text" id="sw-strung-tooltip" role="tooltip">Swingweight is the racquet’s moment of inertia relative to the axis near the handle. A higher swingweight increases stability and energy transfer on impact, but requires more effort to accelerate the racquet.</span></span></span></span><span class="value">331.4 kg·cm²</span></div>
 <div class="spec-item"><span class="label">Balance</span><span class="value">325 mm</span></div>
+</section>
 </div>
 </body>
 </html>
