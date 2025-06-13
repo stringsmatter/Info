@@ -88,7 +88,16 @@
       z-index: 10;
       padding-top: 12px;
     }
-  </style>
+  
+
+.tooltip-container {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+.tooltip-container.visible {
+  opacity: 1;
+}
+</style>
 <style>
 .tooltip-icon {
   display: inline-flex;
@@ -116,7 +125,7 @@
   visibility: hidden;
   opacity: 0;
   width: max-content;
-  max-width: 260px;
+  display: none;
   /* Die Schriftstärke wurde auf 300 (Light) gesetzt, wie in der bereitgestellten Datei */
   font-weight: 300; /* */
   font-size: 13px;
@@ -170,7 +179,36 @@
   padding: 0;
   margin: 0;
 }
-</style></head>
+
+
+.tooltip-container {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+.tooltip-container.visible {
+  opacity: 1;
+}
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  #tooltip-container {
+    background-color: #222 !important;
+    color: #eee !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
+  }
+}
+
+
+.tooltip-container {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+.tooltip-container.visible {
+  opacity: 1;
+}
+</style>
+
+</head>
 <body>
 <div class="spec-card">
 <h1>Racquet Info</h1>
@@ -250,5 +288,86 @@
 <div class="spec-item"><span class="label">Balance</span><span class="value">325 mm</span></div>
 </section>
 </div>
+
+<div id="tooltip-container"
+     style="position: fixed; z-index: 1000; display: none; padding: 8px 10px; font-size: 13px; font-weight: 300;
+            border-radius: 6px; background-color: #f9f9f9; color: #111; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            max-width: 360px; min-width: 240px; line-height: 1.5; word-break: break-word; white-space: normal;">
+</div>
+
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tooltipContainer = document.getElementById('tooltip-container');
+    let activeButton = null;
+
+    const forceCloseTooltip = () => {
+      tooltipContainer.classList.remove('visible');
+      tooltipContainer.style.display = 'none';
+      activeButton = null;
+    };
+
+    const show = (button, text) => {
+      forceCloseTooltip(); // <- Immer erst schließen
+      activeButton = button;
+      tooltipContainer.textContent = text;
+      tooltipContainer.style.display = 'block';
+
+      const iconRect = button.getBoundingClientRect();
+      const tipRect = tooltipContainer.getBoundingClientRect();
+      const top = iconRect.bottom + 6;
+      let left = iconRect.left + (iconRect.width / 2) - (tipRect.width / 2);
+      if (left < 8) left = 8;
+      if (left + tipRect.width > window.innerWidth - 8) {
+        left = window.innerWidth - tipRect.width - 8;
+      }
+
+      tooltipContainer.style.top = `${top}px`;
+      tooltipContainer.style.left = `${left}px`;
+      tooltipContainer.classList.add('visible');
+    };
+
+    const hide = () => {
+      tooltipContainer.classList.remove('visible');
+      setTimeout(() => {
+        tooltipContainer.style.display = 'none';
+      }, 200);
+      activeButton = null;
+    };
+
+    document.querySelectorAll('.tooltip-icon').forEach(icon => {
+      const button = icon.querySelector('button');
+      const tooltip = icon.querySelector('.tooltip-text');
+      if (!button || !tooltip) return;
+
+      button.addEventListener('focus', () => show(button, tooltip.textContent));
+      button.addEventListener('click', (e) => {
+        e.stopPropagation();
+        show(button, tooltip.textContent);
+      });
+      button.addEventListener('blur', hide);
+
+      button.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        show(button, tooltip.textContent);
+      }, { passive: false });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (activeButton && !activeButton.contains(e.target)) hide();
+    });
+    document.addEventListener('touchstart', (e) => {
+      if (activeButton && !activeButton.contains(e.target)) hide();
+    }, { passive: true });
+  });
+</script>
+
+
+
+
 </body>
 </html>
