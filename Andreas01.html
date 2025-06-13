@@ -207,7 +207,6 @@
   opacity: 1;
 }
 </style>
-
 </head>
 <body>
 <div class="spec-card">
@@ -222,7 +221,7 @@
 <div class="spec-item">
 <span class="label">
 <span class="label-with-icon">Unstrung Weight
-<span class="tooltip-icon tooltip-label" tabindex="0" aria-describedby="uw-tooltip"><button type="button" aria-label="Informationen zum unbesaiteten Gewicht">
+<span aria-describedby="uw-tooltip" class="tooltip-icon tooltip-label" tabindex="0"><button aria-label="Informationen zum unbesaiteten Gewicht" type="button">
 <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
 <circle cx="12" cy="12" r="10"></circle>
 <line x1="12" x2="12" y1="16" y2="12"></line>
@@ -231,7 +230,7 @@
 </button><span class="tooltip-text" id="uw-tooltip" role="tooltip">Factory specification only. Actual weight may vary due to manufacturing tolerances (±7 g typical).</span></span></span></span><span class="value">305 g</span></div>
 <div class="spec-item">
 <span class="label">
-<span class="label-with-icon">Stiffness<span class="tooltip-icon tooltip-label" tabindex="0" aria-describedby="stiffness-tooltip"><button type="button" aria-label="Informationen zur Steifigkeit">
+<span class="label-with-icon">Stiffness<span aria-describedby="stiffness-tooltip" class="tooltip-icon tooltip-label" tabindex="0"><button aria-label="Informationen zur Steifigkeit" type="button">
 <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
 <circle cx="12" cy="12" r="10"></circle>
 <line x1="12" x2="12" y1="16" y2="12"></line>
@@ -248,7 +247,7 @@
 <h2 style="display: flex; align-items: center; gap: 6px;">
       Measured Unstrung Specs
       
-<span class="tooltip-icon tooltip-heading" tabindex="0" aria-describedby="mu-specs-tooltip"><button type="button" aria-label="Informationen zu gemessenen unbesaiteten Spezifikationen">
+<span aria-describedby="mu-specs-tooltip" class="tooltip-icon tooltip-heading" tabindex="0"><button aria-label="Informationen zu gemessenen unbesaiteten Spezifikationen" type="button">
 <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
 <circle cx="12" cy="12" r="10"></circle>
 <line x1="12" x2="12" y1="16" y2="12"></line>
@@ -258,7 +257,7 @@
 <div class="spec-item"><span class="label">Weight</span><span class="value">313.5 g</span></div>
 <div class="spec-item">
 <span class="label">
-<span class="label-with-icon">Swingweight<span class="tooltip-icon tooltip-label" tabindex="0" aria-describedby="sw-unstrung-tooltip"><button type="button" aria-label="Informationen zum Schwunggewicht (unbesaitet)">
+<span class="label-with-icon">Swingweight<span aria-describedby="sw-unstrung-tooltip" class="tooltip-icon tooltip-label" tabindex="0"><button aria-label="Informationen zum Schwunggewicht (unbesaitet)" type="button">
 <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
 <circle cx="12" cy="12" r="10"></circle>
 <line x1="12" x2="12" y1="16" y2="12"></line>
@@ -268,7 +267,7 @@
 <div class="spec-item"><span class="label">Balance</span><span class="value">319 mm</span></div>
 </section>
 <section>
-<h2 style="display: flex; align-items: center; gap: 6px;">Measured Strung Specs<span class="tooltip-icon tooltip-heading" tabindex="0" aria-describedby="ms-specs-tooltip"><button type="button" aria-label="Informationen zu gemessenen besaiteten Spezifikationen">
+<h2 style="display: flex; align-items: center; gap: 6px;">Measured Strung Specs<span aria-describedby="ms-specs-tooltip" class="tooltip-icon tooltip-heading" tabindex="0"><button aria-label="Informationen zu gemessenen besaiteten Spezifikationen" type="button">
 <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
 <circle cx="12" cy="12" r="10"></circle>
 <line x1="12" x2="12" y1="16" y2="12"></line>
@@ -278,7 +277,7 @@
 <div class="spec-item"><span class="label">Weight</span><span class="value">335.1 g</span></div>
 <div class="spec-item">
 <span class="label">
-<span class="label-with-icon">Swingweight<span class="tooltip-icon tooltip-label" tabindex="0" aria-describedby="sw-strung-tooltip"><button type="button" aria-label="Informationen zum Schwunggewicht (besaitet)">
+<span class="label-with-icon">Swingweight<span aria-describedby="sw-strung-tooltip" class="tooltip-icon tooltip-label" tabindex="0"><button aria-label="Informationen zum Schwunggewicht (besaitet)" type="button">
 <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
 <circle cx="12" cy="12" r="10"></circle>
 <line x1="12" x2="12" y1="16" y2="12"></line>
@@ -288,17 +287,10 @@
 <div class="spec-item"><span class="label">Balance</span><span class="value">325 mm</span></div>
 </section>
 </div>
-
-<div id="tooltip-container"
-     style="position: fixed; z-index: 1000; display: none; padding: 8px 10px; font-size: 13px; font-weight: 300;
+<div id="tooltip-container" style="position: fixed; z-index: 1000; display: none; padding: 8px 10px; font-size: 13px; font-weight: 300;
             border-radius: 6px; background-color: #f9f9f9; color: #111; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             max-width: 360px; min-width: 240px; line-height: 1.5; word-break: break-word; white-space: normal;">
 </div>
-
-
-
-
-
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const tooltipContainer = document.getElementById('tooltip-container');
@@ -348,7 +340,7 @@
         e.stopPropagation();
         show(button, tooltip.textContent);
       });
-      button.addEventListener('blur', hide);
+      
 
       button.addEventListener('touchstart', (e) => {
         e.preventDefault();
@@ -365,9 +357,5 @@
     }, { passive: true });
   });
 </script>
-
-
-
-
 </body>
 </html>
