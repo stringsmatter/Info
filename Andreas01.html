@@ -102,7 +102,34 @@
 }
   text-decoration: underline;
   color: #005fa3;
-}</style>
+}
+a.value {
+  text-decoration: none;
+}
+
+a.value:hover {
+  text-decoration: underline;
+}
+a.value {
+  text-decoration: none !important;
+}
+
+a.value:hover {
+  text-decoration: underline;
+}
+a.value {
+  display: inline-block;
+  padding-left: 8px;
+  color: #1e88e5;
+  font-family: monospace;
+  word-break: break-word;
+}
+
+.hover-target:hover .value {
+  text-decoration: underline;
+  cursor: pointer;
+}
+</style>
 <style>
 .tooltip-icon {
   display: inline-flex;
@@ -244,6 +271,8 @@
 </button><span class="tooltip-text" id="stiffness-tooltip" role="tooltip">Measured by Tennis Warehouse University (TWU). Babolat RA scale – higher values indicate a stiffer frame and less flex at impact.</span></span></span></span><span class="value">61</span></div>
 <div class="spec-item"><span class="label">Beam</span><span class="value">21 mm / 21 mm / 21 mm</span></div>
 <div class="spec-item"><span class="label">Length</span><span class="value">68.58 cm</span></div>
+
+  
 </section>
 <section>
 <h2>Customization</h2><div class="spec-item"><span class="label">Mains / Crosses</span><span class="value">Hyper G 1.25 / Hyper G Round 1.25</span></div><div class="spec-item"><span class="label">Replacement Grip</span><span class="value">Wilson Leather</span></div><div class="spec-item"><span class="label">Overgrip</span><span class="value">Wilson Pro</span></div><div class="spec-item"><span class="label">Dampener</span><span class="value">no</span></div><div class="spec-item"><span class="label">Added Weight</span><span class="value">2.5 g @12</span></div>
@@ -291,8 +320,29 @@
 </button><span class="tooltip-text" id="sw-strung-tooltip" role="tooltip">Swingweight is the racquet’s moment of inertia relative to the axis near the handle. A higher swingweight increases stability and energy transfer on impact, but requires more effort to accelerate the racquet.</span></span></span></span><span class="value">331.4 kg·cm²</span></div>
 <div class="spec-item"><span class="label">Balance</span><span class="value">325 mm</span></div>
 </section>
-<section><h2>My Other Racquets</h2><div class="spec-item"><a class="value" href="https://stringsmatter.github.io/Info/Andreas02.html" target="_blank">Andreas 02</a></div></section></div>
-<div id="tooltip-container" style="position: fixed; z-index: 1000; display: none; padding: 8px 10px; font-size: 13px; font-weight: 300;
+
+
+
+
+
+
+
+
+
+<section>
+  <h2>My Other Racquets</h2>
+  <div class="spec-item hover-target" style="position: relative;">
+    <span class="label">Racquet ID</span><span class="value">Andreas 02</span>
+    <a href="https://stringsmatter.github.io/Info/Andreas02.html" target="_blank"
+       style="position: absolute; top: 0; bottom: 0; left: 190px; right: 0; z-index: 1; text-indent: -9999px;">Link</a>
+
+</section>
+
+
+
+
+
+</div><div id="tooltip-container" style="position: fixed; z-index: 1000; display: none; padding: 8px 10px; font-size: 13px; font-weight: 300;
             border-radius: 6px; background-color: #f9f9f9; color: #111; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             max-width: 360px; min-width: 240px; line-height: 1.5; word-break: break-word; white-space: normal;">
 </div>
