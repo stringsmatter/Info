@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Racquet Info</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&amp;display=swap" rel="stylesheet"/>
+<style>:root { color-scheme: light dark; }
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      padding: 24px;
+      margin: 0;
+      background-color: #f5f7fa;
+      color: #222;
+      display: flex;
+      justify-content: center;
+    }
+    .spec-card {
+      background-color: white;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      max-width: 700px;
+      width: 100%;
+    }
+    h1 {
+      font-size: 26px;
+      margin-bottom: 24px;
+      color: #1a1a1a;
+    }
+    h2 {
+      font-size: 20px;
+      margin-top: 40px;
+      margin-bottom: 12px;
+      color: #333;
+      border-left: 4px solid #888;
+      padding-left: 12px;
+    }
+    .spec-item {
+      margin-bottom: 12px;
+    }
+    .label {
+      font-weight: 700;
+      display: inline-block;
+      width: 190px;
+      color: #555;
+    }
+    .value {
+      display: inline-block;
+      color: #1e88e5;
+      font-family: monospace;
+      padding-left: 8px;
+      word-break: break-word;
+    }
+    @media (max-width: 600px) {
+      .label, .value {
+        display: block;
+        width: auto;
+        padding-left: 0;
+      }
+      .spec-item {
+        margin-bottom: 24px;
+      }
+      body {
+        padding: 16px;
+      }
+    }
+    @media (max-width: 480px) {
+      body {
+        font-size: 18px;
+      }
+    }
+    @media (prefers-color-scheme: dark) {
+      body { background-color: #121212; color: #eee; }
+      .spec-card { background-color: #1e1e1e; box-shadow: none; }
+      .label { color: #aaa; }
+      .value { color: #4fc3f7; }
+      h1 { color: #f0f0f0; }
+      h2 { color: #ddd; border-left: 4px solid #888; }
+    }
+    h1 {
+      position: sticky;
+      top: 0;
+      background: inherit;
+      z-index: 10;
+      padding-top: 12px;
+    }
+  
+
+.tooltip-container {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+.tooltip-container.visible {
+  opacity: 1;
+}
+  color: #0077cc;
+  text-decoration: none;
+  font-weight: 500;
+}
+  text-decoration: underline;
+  color: #005fa3;
+}
+a.value {
+  text-decoration: none;
+}
+
+a.value:hover {
+  text-decoration: underline;
+}
+a.value {
+  text-decoration: none !important;
+}
+
+a.value:hover {
+  text-decoration: underline;
+}
+a.value {
+  display: inline-block;
+  padding-left: 8px;
+  color: #1e88e5;
+  font-family: monospace;
+  word-break: break-word;
+}
+
+.hover-target:hover .value {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .hover-target a {
+    left: 0 !important;
+  }
+}
+</style>
+<style>
+.tooltip-icon {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  cursor: pointer;
+  position: relative;
+}
+.tooltip-label {
+  gap: 6px;
+}
+.tooltip-heading {
+  gap: 1px;
+}
+.label-with-icon {
+  display: inline-flex;
+  align-items: baseline;
+  /* Reduzierter Abstand, wie in der bereitgestellten Datei */
+  gap: 4px; /* */
+}
+.tooltip-icon svg {
+  pointer-events: none;
+}
+.tooltip-icon .tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  width: max-content;
+  display: none;
+  /* Die Schriftstärke wurde auf 300 (Light) gesetzt, wie in der bereitgestellten Datei */
+  font-weight: 300; /* */
+  font-size: 13px;
+  border-radius: 6px;
+  padding: 8px 10px;
+  position: absolute;
+  z-index: 100;
+  top: 20px;
+  left: 0; /* Standardposition: am linken Rand des Icons */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.2s ease;
+  background-color: #f9f9f9;
+  color: #111;
+}
+
+/* Responsivität für Tooltips */
+@media (max-width: 768px) {
+  .tooltip-icon .tooltip-text {
+    left: unset; /* Deaktiviert die linke Ausrichtung */
+    right: -24px; /* Verschiebt den Tooltip um 24px vom rechten Rand des Icons nach links */
+    max-width: calc(100vw - 48px); /* Nimmt die Viewport-Breite - 2 * Body-Padding (24px) */
+    width: auto; /* Lässt die Breite sich anpassen */
+    box-sizing: border-box; /* Stellt sicher, dass Padding und Border in der Breite enthalten sind */
+  }
+  /* Optional: Wenn Tooltip auch am linken Rand überlappen könnte, wenn das Icon ganz links ist */
+  /* Dies ist eine Fallback-Regel für den seltenen Fall, dass der Tooltip zu breit ist und links überlappen würde */
+  .tooltip-icon .tooltip-text.adjust-left {
+      left: 16px; /* Ein fester Abstand vom linken Rand des Viewports */
+      right: unset;
+      transform: unset;
+      max-width: calc(100vw - 32px); /* Viewport-Breite - 2 * 16px Padding */
+  }
+}
+
+
+@media (prefers-color-scheme: dark) {
+  .tooltip-icon .tooltip-text {
+    background-color: #222;
+    color: #eee;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+}
+.tooltip-icon:focus-within .tooltip-text,
+.tooltip-icon:active .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+.tooltip-icon button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+.tooltip-container {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+.tooltip-container.visible {
+  opacity: 1;
+}
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  #tooltip-container {
+    background-color: #222 !important;
+    color: #eee !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
+  }
+}
+
+
+.tooltip-container {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+.tooltip-container.visible {
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+<div class="spec-card">
+<h1>Racquet Info</h1>
+<div class="spec-item"><span class="label">Racquet ID</span><span class="value">AM Blade V9 01</span></div>
+<div class="spec-item"><span class="label">Modell</span><span class="value">Wilson Blade 98 V9</span></div>
+<div class="spec-item"><span class="label">First used</span><span class="value">September 2025</span></div>
+<section>
+<h2>General Specifications</h2>
+<div class="spec-item"><span class="label">Head Size</span><span class="value">98 in²</span></div>
+<div class="spec-item"><span class="label">String Pattern</span><span class="value">16x19</span></div>
+<div class="spec-item">
+<span class="label">
+<span class="label-with-icon">Unstrung Weight
+<span aria-describedby="uw-tooltip" class="tooltip-icon tooltip-label" tabindex="0"><button aria-label="Informationen zum unbesaiteten Gewicht" type="button">
+<svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="12" x2="12" y1="16" y2="12"></line>
+<line x1="12" x2="12" y1="8" y2="8"></line>
+</svg>
+</button><span class="tooltip-text" id="uw-tooltip" role="tooltip">Factory specification only. Actual weight may vary due to manufacturing tolerances (±7 g typical).</span></span></span></span><span class="value">305 g</span></div>
+<div class="spec-item">
+<span class="label">
+<span class="label-with-icon">Stiffness<span aria-describedby="stiffness-tooltip" class="tooltip-icon tooltip-label" tabindex="0"><button aria-label="Informationen zur Steifigkeit" type="button">
+<svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="12" x2="12" y1="16" y2="12"></line>
+<line x1="12" x2="12" y1="8" y2="8"></line>
+</svg>
+</button><span class="tooltip-text" id="stiffness-tooltip" role="tooltip">Measured by Tennis Warehouse University (TWU). Babolat RA scale – higher values indicate a stiffer frame and less flex at impact.</span></span></span></span><span class="value">62</span></div>
+<div class="spec-item"><span class="label">Beam</span><span class="value">21 mm / 21 mm / 21 mm</span></div>
+<div class="spec-item"><span class="label">Length</span><span class="value">68.58 cm</span></div>
+
+  
+</section>
+<section>
+<h2>Customization</h2><div class="spec-item"><span class="label">Mains / Crosses</span><span class="value">Hyper G 1.25 / Hyper G Round 1.25</span></div><div class="spec-item"><span class="label">Replacement Grip</span><span class="value">Wilson Leather</span></div><div class="spec-item"><span class="label">Overgrip</span><span class="value">Wilson Pro</span></div><div class="spec-item"><span class="label">Dampener</span><span class="value">no</span></div><div class="spec-item"><span class="label">Added Weight</span><span class="value">2.5 g @12</span></div>
+</section>
+<section>
+<h2 style="display: flex; align-items: center; gap: 6px;">
+      Measured Unstrung Specs
+      
+<span aria-describedby="mu-specs-tooltip" class="tooltip-icon tooltip-heading" tabindex="0"><button aria-label="Informationen zu gemessenen unbesaiteten Spezifikationen" type="button">
+<svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="12" x2="12" y1="16" y2="12"></line>
+<line x1="12" x2="12" y1="8" y2="8"></line>
+</svg>
+</button><span class="tooltip-text" id="mu-specs-tooltip" role="tooltip">Frame-only measurement: no strings or overgrip, but includes replacement grip of choice and added weight.</span></span></h2>
+<div class="spec-item"><span class="label">Weight</span><span class="value">311.5 g</span></div>
+<div class="spec-item">
+<span class="label">
+<span class="label-with-icon">Swingweight<span aria-describedby="sw-unstrung-tooltip" class="tooltip-icon tooltip-label" tabindex="0"><button aria-label="Informationen zum Schwunggewicht (unbesaitet)" type="button">
+<svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="12" x2="12" y1="16" y2="12"></line>
+<line x1="12" x2="12" y1="8" y2="8"></line>
+</svg>
+</button><span class="tooltip-text" id="sw-unstrung-tooltip" role="tooltip">Swingweight is the racquet’s moment of inertia about an axis orthogonal to the racquet’s longitudinal axis, 10 cm above the butt cap. A higher swingweight improves stability and energy transfer on impact, but makes the racquet harder to accelerate.</span></span></span></span><span class="value">299.2 kg·cm²</span></div>
+<div class="spec-item"><span class="label">Balance</span><span class="value">318 mm</span></div>
+</section>
+<section>
+<h2 style="display: flex; align-items: center; gap: 6px;">Measured Strung Specs<span aria-describedby="ms-specs-tooltip" class="tooltip-icon tooltip-heading" tabindex="0"><button aria-label="Informationen zu gemessenen besaiteten Spezifikationen" type="button">
+<svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="12" x2="12" y1="16" y2="12"></line>
+<line x1="12" x2="12" y1="8" y2="8"></line>
+</svg>
+</button><span class="tooltip-text" id="ms-specs-tooltip" role="tooltip">Fully customized match-ready setup.</span></span></h2>
+<div class="spec-item"><span class="label">Weight</span><span class="value">xy g</span></div>
+<div class="spec-item">
+<span class="label">
+<span class="label-with-icon">Swingweight<span aria-describedby="sw-strung-tooltip" class="tooltip-icon tooltip-label" tabindex="0"><button aria-label="Informationen zum Schwunggewicht (besaitet)" type="button">
+<svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="12" x2="12" y1="16" y2="12"></line>
+<line x1="12" x2="12" y1="8" y2="8"></line>
+</svg>
+</button><span class="tooltip-text" id="sw-strung-tooltip" role="tooltip">Swingweight is the racquet’s moment of inertia about an axis orthogonal to the racquet’s longitudinal axis, 10 cm above the butt cap. A higher swingweight improves stability and energy transfer on impact, but makes the racquet harder to accelerate.</span></span></span></span><span class="value">xy kg·cm²</span></div>
+<div class="spec-item"><span class="label">Balance</span><span class="value">xy mm</span></div>
+</section>
+
+
+
+
+
+
+
+
+
+<section>
+  <h2>My Other Racquets</h2>
+  <div class="spec-item hover-target" style="position: relative;">
+    <span class="label">Racquet ID</span><span class="value">AM Blade V9 02</span>
+    <a href="https://stringsmatter.github.io/Info/AMV902.html" target="_blank"
+       style="position: absolute; top: 0; bottom: 0; left: 190px; right: 0; z-index: 1; text-indent: -9999px;">Link</a>
+  </div>
+  
+  <div class="spec-item hover-target" style="position: relative;">
+    <span class="label"></span><span class="value">AM Blade V8 01</span>
+    <a href="https://stringsmatter.github.io/Info/AMV801.html" target="_blank"
+       style="position: absolute; top: 0; bottom: 0; left: 190px; right: 0; z-index: 1; text-indent: -9999px;">Link</a>
+  </div>
+  
+  <div class="spec-item hover-target" style="position: relative;">
+    <span class="label"></span><span class="value">AM Blade V8 02</span>
+    <a href="https://stringsmatter.github.io/Info/AMV802.html" target="_blank"
+       style="position: absolute; top: 0; bottom: 0; left: 190px; right: 0; z-index: 1; text-indent: -9999px;">Link</a>
+  </div>
+
+
+</section>
+
+
+
+
+
+</div><div id="tooltip-container" style="position: fixed; z-index: 1000; display: none; padding: 8px 10px; font-size: 13px; font-weight: 300;
+            border-radius: 6px; background-color: #f9f9f9; color: #111; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            max-width: 360px; min-width: 240px; line-height: 1.5; word-break: break-word; white-space: normal;">
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tooltipContainer = document.getElementById('tooltip-container');
+    let activeButton = null;
+
+    const forceCloseTooltip = () => {
+      tooltipContainer.classList.remove('visible');
+      tooltipContainer.style.display = 'none';
+      activeButton = null;
+    };
+
+    const show = (button, text) => {
+      forceCloseTooltip(); // <- Immer erst schließen
+      activeButton = button;
+      tooltipContainer.textContent = text;
+      tooltipContainer.style.display = 'block';
+
+      const iconRect = button.getBoundingClientRect();
+      const tipRect = tooltipContainer.getBoundingClientRect();
+      const top = iconRect.bottom + 6;
+      let left = iconRect.left + (iconRect.width / 2) - (tipRect.width / 2);
+      if (left < 8) left = 8;
+      if (left + tipRect.width > window.innerWidth - 8) {
+        left = window.innerWidth - tipRect.width - 8;
+      }
+
+      tooltipContainer.style.top = `${top}px`;
+      tooltipContainer.style.left = `${left}px`;
+      tooltipContainer.classList.add('visible');
+    };
+
+    const hide = () => {
+      tooltipContainer.classList.remove('visible');
+      setTimeout(() => {
+        tooltipContainer.style.display = 'none';
+      }, 200);
+      activeButton = null;
+    };
+
+    document.querySelectorAll('.tooltip-icon').forEach(icon => {
+      const button = icon.querySelector('button');
+      const tooltip = icon.querySelector('.tooltip-text');
+      if (!button || !tooltip) return;
+
+      button.addEventListener('focus', () => show(button, tooltip.textContent));
+      button.addEventListener('click', (e) => {
+        e.stopPropagation();
+        show(button, tooltip.textContent);
+      });
+      
+
+      button.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        show(button, tooltip.textContent);
+      }, { passive: false });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (activeButton && !activeButton.contains(e.target)) hide();
+    });
+    document.addEventListener('touchstart', (e) => {
+      if (activeButton && !activeButton.contains(e.target)) hide();
+    }, { passive: true });
+  });
+</script>
+</body>
+</html>
