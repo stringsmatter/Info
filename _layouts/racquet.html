@@ -150,6 +150,38 @@
     <div class="spec-item"><span class="label">Balance</span><span class="value">{{ r.measured_strung.balance }}</span></div>
   </section>
 
+  <!-- =========================
+       AUTO: My Other Racquets (by owner)
+       ========================= -->
+  {% assign my_owner = r.owner %}
+  {% if my_owner %}
+    {% assign others = "" | split: "" %}
+
+    {% for item in site.data.racquets %}
+      {% assign key = item[0] %}
+      {% assign rr = item[1] %}
+      {% if rr.owner == my_owner and key != page.slug %}
+        {% assign others = others | push: item %}
+      {% endif %}
+    {% endfor %}
+
+    {% if others.size > 0 %}
+      <section>
+        <h2>My Other Racquets</h2>
+
+        {% for item in others %}
+          {% assign key = item[0] %}
+          {% assign rr = item[1] %}
+
+          <a class="spec-item spec-link" href="{{ ('/' | append: key | append: '/') | relative_url }}">
+            <span class="label">{% if forloop.first %}Racquet ID{% endif %}</span>
+            <span class="value">{{ rr.racket_id }}</span>
+          </a>
+        {% endfor %}
+      </section>
+    {% endif %}
+  {% endif %}
+
 </div>
 
 <div id="tooltip-container" class="tooltip-container"
@@ -160,4 +192,3 @@
 
 </body>
 </html>
-
