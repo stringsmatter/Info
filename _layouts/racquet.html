@@ -13,8 +13,6 @@
 </head>
 
 <body>
-{% assign r = site.data.racquets[page.slug] %}
-
 <div class="spec-card">
   <h1>Racquet Info</h1>
 
@@ -152,41 +150,45 @@
     <div class="spec-item"><span class="label">Balance</span><span class="value">{{ r.measured_strung.balance }}</span></div>
   </section>
 
-<!-- =========================
-     AUTO: My Other Racquets (by owner)
-     ========================= -->
-{% assign my_owner = r.owner %}
-{% if my_owner %}
-  {% assign has_other = false %}
+  <!-- =========================
+       AUTO: My Other Racquets (by owner) + sorted by slug
+       ========================= -->
+  {% assign my_owner = r.owner %}
+  {% if my_owner %}
+    {% assign has_other = false %}
 
-  {% for item in site.data.racquets %}
-    {% assign key = item[0] %}
-    {% assign rr = item[1] %}
-    {% if rr.owner == my_owner and key != page.slug %}
-      {% assign has_other = true %}
-      {% break %}
+    {% for item in site.data.racquets %}
+      {% assign key = item[0] %}
+      {% assign rr = item[1] %}
+      {% if rr.owner == my_owner and key != page.slug %}
+        {% assign has_other = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+
+    {% if has_other %}
+      <section>
+        <h2>My Other Racquets</h2>
+
+        {% assign first = true %}
+        {% assign all = site.data.racquets | sort %}
+        {% for item in all %}
+          {% assign key = item[0] %}
+          {% assign rr = item[1] %}
+
+          {% if rr.owner == my_owner and key != page.slug %}
+            <div class="spec-item">
+              <span class="label">{% if first %}Racquet ID{% endif %}</span>
+              <span class="value">
+                <a class="value" href="{{ ('/Info/' | append: key | append: '/') | relative_url }}">{{ rr.racket_id }}</a>
+              </span>
+            </div>
+            {% assign first = false %}
+          {% endif %}
+        {% endfor %}
+      </section>
     {% endif %}
-  {% endfor %}
-
-  {% if has_other %}
-    <section>
-      <h2>My Other Racquets</h2>
-
-      {% assign first = true %}
-{% assign all = site.data.racquets | sort %}
-{% for item in all %}
-  {% assign key = item[0] %}
-  {% assign rr = item[1] %}
-  {% if rr.owner == my_owner and key != page.slug %}
-    <div class="spec-item">
-      <span class="label">{% if first %}Racquet ID{% endif %}</span>
-      <span class="value">
-        <a class="value" href="{{ ('/Info/' | append: key | append: '/') | relative_url }}">{{ rr.racket_id }}</a>
-      </span>
-    </div>
-    {% assign first = false %}
   {% endif %}
-{% endfor %}
 
 </div>
 
