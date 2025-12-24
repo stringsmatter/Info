@@ -1,24 +1,28 @@
-racket_id: AM Blade V8 01
-model: Wilson Blade 98 V8
-first_used: March 2023
+racket_id: "AM Blade V8 01"
+model: "Wilson Blade 98 V8"
+first_used: "March 2023"
+
 general:
-  head_size: 98 in²
-  string_pattern: 16x19
-  unstrung_weight: 305 g
-  stiffness: 61
-  beam: 21 mm / 21 mm / 21 mm
-  length: 68.58 cm
+  head_size: "98 in²"
+  string_pattern: "16x19"
+  unstrung_weight: "305 g"
+  stiffness: "61"
+  beam: "21 mm / 21 mm / 21 mm"
+  length: "68.58 cm"
+
 customization:
-  mains_crosses: Hyper G 1.25 / Hyper G Round 1.25
-  replacement_grip: Wilson Leather
-  overgrip: Wilson Pro
-  dampener: no
-  added_weight: 2.5 g @12
+  mains_crosses: "Hyper G 1.25 / Hyper G Round 1.25"
+  replacement_grip: "Wilson Leather"
+  overgrip: "Wilson Pro"
+  dampener: "no"
+  added_weight: "2.5 g @12"
+
 measured_unstrung:
-  weight: 313.5 g
-  swingweight: 300.9 kg·cm²
-  balance: 319 mm
+  weight: "313.5 g"
+  swingweight: "300.9 kg·cm²"
+  balance: "319 mm"
+
 measured_strung:
-  weight: 335.1 g
-  swingweight: 331.4 kg·cm²
-  balance: 325 mm
+  weight: "335.1 g"
+  swingweight: "331.4 kg·cm²"
+  balance: "325 mm"
