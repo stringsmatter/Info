@@ -1,24 +1,28 @@
-racket_id: Simon 02
-model: Yonex Ezone 100
-first_used: July 2025
+racket_id: "Simon 02"
+model: "Yonex Ezone 100"
+first_used: "July 2025"
+
 general:
-  head_size: 100 in²
-  string_pattern: 16x19
-  unstrung_weight: 300 g
-  stiffness: 68
-  beam: 24.5 mm / 26.5 mm / 23 mm
-  length: 68.58 cm
+  head_size: "100 in²"
+  string_pattern: "16x19"
+  unstrung_weight: "300 g"
+  stiffness: "68"
+  beam: "24.5 mm / 26.5 mm / 23 mm"
+  length: "68.58 cm"
+
 customization:
-  mains_crosses: Toroline O-Toro 1.23
-  replacement_grip: Yonex Excel
-  overgrip: Wilson Pro
-  dampener: no
-  added_weight: no
+  mains_crosses: "Toroline O-Toro 1.23"
+  replacement_grip: "Yonex Excel"
+  overgrip: "Wilson Pro"
+  dampener: "no"
+  added_weight: "no"
+
 measured_unstrung:
-  weight: 300.9 g
-  swingweight: 288.6 kg·cm²
-  balance: 319 mm
+  weight: "300.9 g"
+  swingweight: "288.6 kg·cm²"
+  balance: "319 mm"
+
 measured_strung:
-  weight: 323.6 g
-  swingweight: 320.8 kg·cm²
-  balance: 327 mm
+  weight: "323.6 g"
+  swingweight: "320.8 kg·cm²"
+  balance: "327 mm"
