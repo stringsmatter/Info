@@ -20,6 +20,13 @@
   <div class="spec-item"><span class="label">Modell</span><span class="value">{{ r.model }}</span></div>
   <div class="spec-item"><span class="label">First used</span><span class="value">{{ r.first_used }}</span></div>
 
+  {% if r.owner %}
+    <div class="spec-item"><span class="label">Owner</span><span class="value">{{ r.owner }}</span></div>
+  {% endif %}
+  {% if r.club %}
+    <div class="spec-item"><span class="label">Club</span><span class="value">{{ r.club }}</span></div>
+  {% endif %}
+
   <section>
     <h2>General Specifications</h2>
     <div class="spec-item"><span class="label">Head Size</span><span class="value">{{ r.general.head_size }}</span></div>
