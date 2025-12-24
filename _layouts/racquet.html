@@ -150,37 +150,43 @@
     <div class="spec-item"><span class="label">Balance</span><span class="value">{{ r.measured_strung.balance }}</span></div>
   </section>
 
-  <!-- =========================
-       AUTO: My Other Racquets (by owner)
-       ========================= -->
-  {% assign my_owner = r.owner %}
-  {% if my_owner %}
-    {% assign others = "" | split: "" %}
+<!-- =========================
+     AUTO: My Other Racquets (by owner) - GitHub Pages safe
+     ========================= -->
+{% assign my_owner = r.owner %}
+{% if my_owner %}
+  {% assign has_other = false %}
 
-    {% for item in site.data.racquets %}
-      {% assign key = item[0] %}
-      {% assign rr = item[1] %}
-      {% if rr.owner == my_owner and key != page.slug %}
-        {% assign others = others | push: item %}
-      {% endif %}
-    {% endfor %}
+  {%- comment -%} Erst prüfen, ob es überhaupt andere gibt {%- endcomment -%}
+  {% for item in site.data.racquets %}
+    {% assign key = item[0] %}
+    {% assign rr = item[1] %}
+    {% if rr.owner == my_owner and key != page.slug %}
+      {% assign has_other = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
 
-    {% if others.size > 0 %}
-      <section>
-        <h2>My Other Racquets</h2>
+  {% if has_other %}
+    <section>
+      <h2>My Other Racquets</h2>
 
-        {% for item in others %}
-          {% assign key = item[0] %}
-          {% assign rr = item[1] %}
+      {% assign printed_label = false %}
+      {% for item in site.data.racquets %}
+        {% assign key = item[0] %}
+        {% assign rr = item[1] %}
 
+        {% if rr.owner == my_owner and key != page.slug %}
           <a class="spec-item spec-link" href="{{ ('/' | append: key | append: '/') | relative_url }}">
-            <span class="label">{% if forloop.first %}Racquet ID{% endif %}</span>
+            <span class="label">{% unless printed_label %}Racquet ID{% endunless %}</span>
             <span class="value">{{ rr.racket_id }}</span>
           </a>
-        {% endfor %}
-      </section>
-    {% endif %}
+          {% assign printed_label = true %}
+        {% endif %}
+      {% endfor %}
+    </section>
   {% endif %}
+{% endif %}
 
 </div>
 
