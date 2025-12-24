@@ -41,7 +41,7 @@ h2 {
 }
 
 /* =========================
-   SPEC LAYOUT (GRID FIX)
+   SPEC LAYOUT (GRID)
    ========================= */
 
 .spec-item {
@@ -66,7 +66,22 @@ h2 {
 }
 
 /* =========================
-   LINKS
+   CLICKABLE SPEC ROWS
+   (My Other Racquets – Option B)
+   ========================= */
+
+.spec-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.spec-link:hover .value {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* =========================
+   LINKS (GLOBAL)
    ========================= */
 
 a {
@@ -83,18 +98,13 @@ a:hover {
 a.value { text-decoration: none !important; }
 a.value:hover { text-decoration: underline; }
 
-.hover-target:hover .value {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
 /* =========================
    MOBILE
    ========================= */
 
 @media (max-width: 600px) {
   .spec-item {
-    display: block;          /* <<< GRID AUS */
+    display: block;     /* Grid aus */
     margin-bottom: 24px;
   }
 
@@ -106,7 +116,6 @@ a.value:hover { text-decoration: underline; }
   }
 
   body { padding: 16px; }
-  .hover-target a { left: 0 !important; }
 }
 
 @media (max-width: 480px) {
@@ -130,6 +139,7 @@ a.value:hover { text-decoration: underline; }
 
   .label { color: #aaa; }
   .value { color: #4fc3f7; }
+
   h1 { color: #f0f0f0; }
   h2 {
     color: #ddd;
@@ -195,6 +205,10 @@ a.value:hover { text-decoration: underline; }
   }
 }
 
+/* =========================
+   DARK MODE TOOLTIP
+   ========================= */
+
 @media (prefers-color-scheme: dark) {
   .tooltip-icon .tooltip-text {
     background-color: #222;
@@ -237,4 +251,6 @@ a.value:hover { text-decoration: underline; }
   color: inherit;
 }
 
-.tooltip-icon button:focus { outline: none; }
+.tooltip-icon button:focus {
+  outline: none;
+}
