@@ -1,24 +1,28 @@
-racket_id: AM Blade V9 02
-model: Wilson Blade 98 V9
-first_used: September 2025
+racket_id: "AM Blade V9 02"
+model: "Wilson Blade 98 V9"
+first_used: "September 2025"
+
 general:
-  head_size: 98 in²
-  string_pattern: 16x19
-  unstrung_weight: 305 g
-  stiffness: 62
-  beam: 21 mm / 21 mm / 21 mm
-  length: 68.58 cm
+  head_size: "98 in²"
+  string_pattern: "16x19"
+  unstrung_weight: "305 g"
+  stiffness: "62"
+  beam: "21 mm / 21 mm / 21 mm"
+  length: "68.58 cm"
+
 customization:
-  mains_crosses: Hyper G 1.25 / Hyper G Round 1.25
-  replacement_grip: Wilson Leather
-  overgrip: Wilson Pro
-  dampener: no
-  added_weight: 2.4 g @12
+  mains_crosses: "Hyper G 1.25 / Hyper G Round 1.25"
+  replacement_grip: "Wilson Leather"
+  overgrip: "Wilson Pro"
+  dampener: "no"
+  added_weight: "2.4 g @12"
+
 measured_unstrung:
-  weight: 310.1 g
-  swingweight: 299.7 kg·cm²
-  balance: 318 mm
+  weight: "310.1 g"
+  swingweight: "299.7 kg·cm²"
+  balance: "318 mm"
+
 measured_strung:
-  weight: 331.7 g
-  swingweight: 330.4 kg·cm²
-  balance: 325 mm
+  weight: "331.7 g"
+  swingweight: "330.4 kg·cm²"
+  balance: "325 mm"
