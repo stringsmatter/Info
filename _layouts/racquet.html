@@ -170,18 +170,25 @@
     <section>
       <h2>My Other Racquets</h2>
 
-      <div class="spec-item">
-        <span class="label">Racquet ID</span>
-        <span class="value">
-          {% for item in site.data.racquets %}
-            {% assign key = item[0] %}
-            {% assign rr = item[1] %}
-            {% if rr.owner == my_owner and key != page.slug %}
-              <a class="value" href="{{ ('/Info/' | append: key | append: '/') | relative_url }}">{{ rr.racket_id }}</a><br/>
-            {% endif %}
-          {% endfor %}
-        </span>
-      </div>
+      {% assign first = true %}
+      {% for item in site.data.racquets %}
+        {% assign key = item[0] %}
+        {% assign rr = item[1] %}
+
+        {% if rr.owner == my_owner and key != page.slug %}
+          <div class="spec-item">
+            <span class="label">
+              {% if first %}Racquet ID{% endif %}
+            </span>
+            <span class="value">
+              <a class="value" href="{{ ('/Info/' | append: key | append: '/') | relative_url }}">
+                {{ rr.racket_id }}
+              </a>
+            </span>
+          </div>
+          {% assign first = false %}
+        {% endif %}
+      {% endfor %}
     </section>
   {% endif %}
 {% endif %}
