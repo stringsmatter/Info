@@ -171,27 +171,20 @@
       <h2>My Other Racquets</h2>
 
       {% assign first = true %}
-      {% for item in site.data.racquets %}
-        {% assign key = item[0] %}
-        {% assign rr = item[1] %}
-
-        {% if rr.owner == my_owner and key != page.slug %}
-          <div class="spec-item">
-            <span class="label">
-              {% if first %}Racquet ID{% endif %}
-            </span>
-            <span class="value">
-              <a class="value" href="{{ ('/Info/' | append: key | append: '/') | relative_url }}">
-                {{ rr.racket_id }}
-              </a>
-            </span>
-          </div>
-          {% assign first = false %}
-        {% endif %}
-      {% endfor %}
-    </section>
+{% assign all = site.data.racquets | sort %}
+{% for item in all %}
+  {% assign key = item[0] %}
+  {% assign rr = item[1] %}
+  {% if rr.owner == my_owner and key != page.slug %}
+    <div class="spec-item">
+      <span class="label">{% if first %}Racquet ID{% endif %}</span>
+      <span class="value">
+        <a class="value" href="{{ ('/Info/' | append: key | append: '/') | relative_url }}">{{ rr.racket_id }}</a>
+      </span>
+    </div>
+    {% assign first = false %}
   {% endif %}
-{% endif %}
+{% endfor %}
 
 </div>
 
