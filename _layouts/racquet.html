@@ -177,7 +177,7 @@
         {% assign rr = item[1] %}
 
         {% if rr.owner == my_owner and key != page.slug %}
-          <a class="spec-item spec-link" href="{{ ('/' | append: key | append: '/') | relative_url }}">
+          <a class="spec-item spec-link" href="{{ ('/Info/' | append: key | append: '/') | relative_url }}"
             <span class="label">{% unless printed_label %}Racquet ID{% endunless %}</span>
             <span class="value">{{ rr.racket_id }}</span>
           </a>
