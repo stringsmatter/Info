@@ -1,6 +1,6 @@
-racket_id: AM Blade V9 01
-model: Wilson Blade 98 V9
-first_used: September 2025
+racket_id: "AM Blade V9 01"
+model: "Wilson Blade 98 V9"
+first_used: "September 2025"
 
 general:
   head_size: "98 in²"
