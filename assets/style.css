@@ -143,3 +143,24 @@ a.value:hover { text-decoration: underline; }
 .tooltip-container { opacity: 0; transition: opacity 0.2s ease-in-out; }
 .tooltip-container.visible { opacity: 1; }
 
+/* --- Tooltip button reset (verhindert Rand/Hintergrund um das Icon) --- */
+.tooltip-icon button {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 0;
+  color: inherit;
+}
+
+/* Optional: schöner Fokus (statt Browser-Rand) */
+.tooltip-icon button:focus {
+  outline: none;
+}
+.tooltip-icon button:focus-visible {
+  outline: 2px solid rgba(136,136,136,0.6);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
