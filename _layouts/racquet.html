@@ -16,6 +16,7 @@
 <div class="spec-card">
   <h1>Racquet Info</h1>
 
+  <!-- ===== Top meta ===== -->
   <div class="spec-item"><span class="label">Racquet ID</span><span class="value">{{ r.racket_id }}</span></div>
   <div class="spec-item"><span class="label">Modell</span><span class="value">{{ r.model }}</span></div>
   <div class="spec-item"><span class="label">First used</span><span class="value">{{ r.first_used }}</span></div>
@@ -27,6 +28,95 @@
     <div class="spec-item"><span class="label">Club</span><span class="value">{{ r.club }}</span></div>
   {% endif %}
 
+  <!-- ===== Block 1: Measured Unstrung Specs ===== -->
+  <section>
+    <h2 style="display: flex; align-items: center; gap: 6px;">
+      Measured Unstrung Specs
+      <span aria-describedby="mu-specs-tooltip" class="tooltip-icon tooltip-heading" tabindex="0">
+        <button aria-label="Informationen zu gemessenen unbesaiteten Spezifikationen" type="button">
+          <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" x2="12" y1="16" y2="12"></line>
+            <line x1="12" x2="12" y1="8" y2="8"></line>
+          </svg>
+        </button>
+        <span class="tooltip-text" id="mu-specs-tooltip" role="tooltip">Frame-only measurement: no strings or overgrip, but includes replacement grip of choice and added weight.</span>
+      </span>
+    </h2>
+
+    <div class="spec-item"><span class="label">Weight</span><span class="value">{{ r.measured_unstrung.weight }}</span></div>
+
+    <div class="spec-item">
+      <span class="label">
+        <span class="label-with-icon">Swingweight
+          <span aria-describedby="sw-unstrung-tooltip" class="tooltip-icon tooltip-label" tabindex="0">
+            <button aria-label="Informationen zum Schwunggewicht (unbesaitet)" type="button">
+              <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" x2="12" y1="16" y2="12"></line>
+                <line x1="12" x2="12" y1="8" y2="8"></line>
+              </svg>
+            </button>
+            <span class="tooltip-text" id="sw-unstrung-tooltip" role="tooltip">Swingweight is the racquet’s moment of inertia about an axis orthogonal to the racquet’s longitudinal axis, 10 cm above the butt cap. A higher swingweight improves stability and energy transfer on impact, but makes the racquet harder to accelerate.</span>
+          </span>
+        </span>
+      </span>
+      <span class="value">{{ r.measured_unstrung.swingweight }}</span>
+    </div>
+
+    <div class="spec-item"><span class="label">Balance</span><span class="value">{{ r.measured_unstrung.balance }}</span></div>
+  </section>
+
+  <!-- ===== Block 2: Measured Strung Specs ===== -->
+  <section>
+    <h2 style="display: flex; align-items: center; gap: 6px;">
+      Measured Strung Specs
+      <span aria-describedby="ms-specs-tooltip" class="tooltip-icon tooltip-heading" tabindex="0">
+        <button aria-label="Informationen zu gemessenen besaiteten Spezifikationen" type="button">
+          <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" x2="12" y1="16" y2="12"></line>
+            <line x1="12" x2="12" y1="8" y2="8"></line>
+          </svg>
+        </button>
+        <span class="tooltip-text" id="ms-specs-tooltip" role="tooltip">Fully customized match-ready setup.</span>
+      </span>
+    </h2>
+
+    <div class="spec-item"><span class="label">Weight</span><span class="value">{{ r.measured_strung.weight }}</span></div>
+
+    <div class="spec-item">
+      <span class="label">
+        <span class="label-with-icon">Swingweight
+          <span aria-describedby="sw-strung-tooltip" class="tooltip-icon tooltip-label" tabindex="0">
+            <button aria-label="Informationen zum Schwunggewicht (besaitet)" type="button">
+              <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" x2="12" y1="16" y2="12"></line>
+                <line x1="12" x2="12" y1="8" y2="8"></line>
+              </svg>
+            </button>
+            <span class="tooltip-text" id="sw-strung-tooltip" role="tooltip">Swingweight is the racquet’s moment of inertia about an axis orthogonal to the racquet’s longitudinal axis, 10 cm above the butt cap. A higher swingweight improves stability and energy transfer on impact, but makes the racquet harder to accelerate.</span>
+          </span>
+        </span>
+      </span>
+      <span class="value">{{ r.measured_strung.swingweight }}</span>
+    </div>
+
+    <div class="spec-item"><span class="label">Balance</span><span class="value">{{ r.measured_strung.balance }}</span></div>
+  </section>
+
+  <!-- ===== Block 3: Customization ===== -->
+  <section>
+    <h2>Customization</h2>
+    <div class="spec-item"><span class="label">Mains / Crosses</span><span class="value">{{ r.customization.mains_crosses }}</span></div>
+    <div class="spec-item"><span class="label">Replacement Grip</span><span class="value">{{ r.customization.replacement_grip }}</span></div>
+    <div class="spec-item"><span class="label">Overgrip</span><span class="value">{{ r.customization.overgrip }}</span></div>
+    <div class="spec-item"><span class="label">Dampener</span><span class="value">{{ r.customization.dampener }}</span></div>
+    <div class="spec-item"><span class="label">Added Weight</span><span class="value">{{ r.customization.added_weight }}</span></div>
+  </section>
+
+  <!-- ===== Block 4: General Specifications ===== -->
   <section>
     <h2>General Specifications</h2>
     <div class="spec-item"><span class="label">Head Size</span><span class="value">{{ r.general.head_size }}</span></div>
@@ -72,94 +162,7 @@
     <div class="spec-item"><span class="label">Length</span><span class="value">{{ r.general.length }}</span></div>
   </section>
 
-  <section>
-    <h2>Customization</h2>
-    <div class="spec-item"><span class="label">Mains / Crosses</span><span class="value">{{ r.customization.mains_crosses }}</span></div>
-    <div class="spec-item"><span class="label">Replacement Grip</span><span class="value">{{ r.customization.replacement_grip }}</span></div>
-    <div class="spec-item"><span class="label">Overgrip</span><span class="value">{{ r.customization.overgrip }}</span></div>
-    <div class="spec-item"><span class="label">Dampener</span><span class="value">{{ r.customization.dampener }}</span></div>
-    <div class="spec-item"><span class="label">Added Weight</span><span class="value">{{ r.customization.added_weight }}</span></div>
-  </section>
-
-  <section>
-    <h2 style="display: flex; align-items: center; gap: 6px;">
-      Measured Unstrung Specs
-      <span aria-describedby="mu-specs-tooltip" class="tooltip-icon tooltip-heading" tabindex="0">
-        <button aria-label="Informationen zu gemessenen unbesaiteten Spezifikationen" type="button">
-          <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" x2="12" y1="16" y2="12"></line>
-            <line x1="12" x2="12" y1="8" y2="8"></line>
-          </svg>
-        </button>
-        <span class="tooltip-text" id="mu-specs-tooltip" role="tooltip">Frame-only measurement: no strings or overgrip, but includes replacement grip of choice and added weight.</span>
-      </span>
-    </h2>
-
-    <div class="spec-item"><span class="label">Weight</span><span class="value">{{ r.measured_unstrung.weight }}</span></div>
-
-    <div class="spec-item">
-      <span class="label">
-        <span class="label-with-icon">Swingweight
-          <span aria-describedby="sw-unstrung-tooltip" class="tooltip-icon tooltip-label" tabindex="0">
-            <button aria-label="Informationen zum Schwunggewicht (unbesaitet)" type="button">
-              <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" x2="12" y1="16" y2="12"></line>
-                <line x1="12" x2="12" y1="8" y2="8"></line>
-              </svg>
-            </button>
-            <span class="tooltip-text" id="sw-unstrung-tooltip" role="tooltip">Swingweight is the racquet’s moment of inertia about an axis orthogonal to the racquet’s longitudinal axis, 10 cm above the butt cap. A higher swingweight improves stability and energy transfer on impact, but makes the racquet harder to accelerate.</span>
-          </span>
-        </span>
-      </span>
-      <span class="value">{{ r.measured_unstrung.swingweight }}</span>
-    </div>
-
-    <div class="spec-item"><span class="label">Balance</span><span class="value">{{ r.measured_unstrung.balance }}</span></div>
-  </section>
-
-  <section>
-    <h2 style="display: flex; align-items: center; gap: 6px;">
-      Measured Strung Specs
-      <span aria-describedby="ms-specs-tooltip" class="tooltip-icon tooltip-heading" tabindex="0">
-        <button aria-label="Informationen zu gemessenen besaiteten Spezifikationen" type="button">
-          <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" x2="12" y1="16" y2="12"></line>
-            <line x1="12" x2="12" y1="8" y2="8"></line>
-          </svg>
-        </button>
-        <span class="tooltip-text" id="ms-specs-tooltip" role="tooltip">Fully customized match-ready setup.</span>
-      </span>
-    </h2>
-
-    <div class="spec-item"><span class="label">Weight</span><span class="value">{{ r.measured_strung.weight }}</span></div>
-
-    <div class="spec-item">
-      <span class="label">
-        <span class="label-with-icon">Swingweight
-          <span aria-describedby="sw-strung-tooltip" class="tooltip-icon tooltip-label" tabindex="0">
-            <button aria-label="Informationen zum Schwunggewicht (besaitet)" type="button">
-              <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" x2="12" y1="16" y2="12"></line>
-                <line x1="12" x2="12" y1="8" y2="8"></line>
-              </svg>
-            </button>
-            <span class="tooltip-text" id="sw-strung-tooltip" role="tooltip">Swingweight is the racquet’s moment of inertia about an axis orthogonal to the racquet’s longitudinal axis, 10 cm above the butt cap. A higher swingweight improves stability and energy transfer on impact, but makes the racquet harder to accelerate.</span>
-          </span>
-        </span>
-      </span>
-      <span class="value">{{ r.measured_strung.swingweight }}</span>
-    </div>
-
-    <div class="spec-item"><span class="label">Balance</span><span class="value">{{ r.measured_strung.balance }}</span></div>
-  </section>
-
-  <!-- =========================
-       AUTO: My Other Racquets (by owner) + sorted by slug
-       ========================= -->
+  <!-- ===== Block 5: My Other Racquets ===== -->
   {% assign my_owner = r.owner %}
   {% if my_owner %}
     {% assign has_other = false %}
