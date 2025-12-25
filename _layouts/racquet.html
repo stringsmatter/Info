@@ -51,14 +51,43 @@
       padding-left: 0 !important;
       margin: 0 0 12px 0;
     }
-    
+
     .spec-card{
       padding-bottom: 12px;
     }
 
+    /* ===== Feinschliff 1: Mobile Labels etwas leichter ===== */
+    @media (max-width: 600px){
+      .label{ opacity: 0.85; }
+    }
+
+    /* ===== Feinschliff 2: Values minimal ruhiger ===== */
+    .value{ line-height: 1.35; }
+
+    /* ===== Feinschliff 4: Tooltip-Icon minimal ausrichten ===== */
+    .tooltip-heading{ transform: translateY(1px); }
+
+    /* ===== Feinschliff 5: Hover-Zeile (nur Desktop/Pointer) ===== */
+    @media (hover:hover){
+      .spec-item{
+        border-radius: 8px; /* nur damit hover weich ist */
+      }
+      .spec-item:hover{
+        background: rgba(255,255,255,0.03);
+      }
+    }
+
     @media (prefers-color-scheme: dark){
+      /* Feinschliff 3: Dark Mode Linien weicher */
       .spec-card section + section{
-        border-top: 1px solid rgba(255,255,255,0.10);
+        border-top: 1px solid rgba(255,255,255,0.08);
+      }
+
+      /* Hover im Dark Mode etwas passender */
+      @media (hover:hover){
+        .spec-item:hover{
+          background: rgba(255,255,255,0.04);
+        }
       }
     }
   </style>
