@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}"/>
 
-  <!-- ✅ Design Overrides (nur Optik, kein Inhalt) -->
+  <!-- ✅ Design Overrides -->
   <style>
     /* Header nicht sticky */
     .spec-card > h1{
@@ -42,11 +42,19 @@
       margin: 0;
     }
 
+    /* Linie zwischen Sections */
     .spec-card section + section{
       border-top: 1px solid #e6e9ef;
     }
 
-    /* ===== Titles: keine linken Balken ===== */
+    /* Linie auch VOR der ersten Section (Meta → Measured Unstrung Specs) */
+    .spec-card section:first-of-type{
+      border-top: 1px solid #e6e9ef;
+      margin-top: 22px;
+      padding-top: 22px;
+    }
+
+    /* Titles ohne linken Balken */
     .spec-card h2{
       border-left: none !important;
       padding-left: 0 !important;
@@ -55,7 +63,8 @@
 
     /* Dark Mode Linien */
     @media (prefers-color-scheme: dark){
-      .spec-card section + section{
+      .spec-card section + section,
+      .spec-card section:first-of-type{
         border-top: 1px solid rgba(255,255,255,0.10);
       }
     }
@@ -93,7 +102,9 @@
             <line x1="12" y1="8" x2="12" y2="8"/>
           </svg>
         </button>
-        <span class="tooltip-text">Frame-only measurement: no strings or overgrip, but includes replacement grip of choice and added weight.</span>
+        <span class="tooltip-text">
+          Frame-only measurement: no strings or overgrip, but includes replacement grip of choice and added weight.
+        </span>
       </span>
     </h2>
 
