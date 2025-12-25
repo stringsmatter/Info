@@ -17,9 +17,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}"/>
 
-  <!-- ✅ Design Overrides -->
+  <!-- ✅ Final Design Overrides -->
   <style>
-    /* Weniger Platz oben */
     body{
       padding-top: 16px !important;
     }
@@ -27,7 +26,7 @@
       body{ padding-top: 12px !important; }
     }
 
-    /* ===== Sections: Trennlinien ===== */
+    /* Sections */
     .spec-card section{
       padding: 22px 0;
       margin: 0;
@@ -37,7 +36,13 @@
       border-top: 1px solid #e6e9ef;
     }
 
-    /* ===== Titles ohne linken Balken ===== */
+    /* Erste Section = ehemaliges h1 → kompakt */
+    .spec-card section:first-of-type{
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    /* Titles ohne linken Balken */
     .spec-card h2{
       border-left: none !important;
       padding-left: 0 !important;
@@ -77,22 +82,7 @@
 
   <!-- ===== Block 1: Measured Unstrung Specs ===== -->
   <section>
-    <h2 style="display:flex;align-items:center;gap:6px;">
-      Measured Unstrung Specs
-      <span class="tooltip-icon tooltip-heading" tabindex="0">
-        <button type="button">
-          <svg fill="none" height="14" stroke="#888" stroke-width="2" viewBox="0 0 24 24" width="14">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="12" y1="16" x2="12" y2="12"/>
-            <line x1="12" y1="8" x2="12" y2="8"/>
-          </svg>
-        </button>
-        <span class="tooltip-text">
-          Frame-only measurement: no strings or overgrip, but includes replacement grip of choice and added weight.
-        </span>
-      </span>
-    </h2>
-
+    <h2>Measured Unstrung Specs</h2>
     <div class="spec-item"><span class="label">Weight</span><span class="value">{{ r.measured_unstrung.weight }}</span></div>
     <div class="spec-item"><span class="label">Swingweight</span><span class="value">{{ r.measured_unstrung.swingweight }}</span></div>
     <div class="spec-item"><span class="label">Balance</span><span class="value">{{ r.measured_unstrung.balance }}</span></div>
@@ -100,20 +90,7 @@
 
   <!-- ===== Block 2: Measured Strung Specs ===== -->
   <section>
-    <h2 style="display:flex;align-items:center;gap:6px;">
-      Measured Strung Specs
-      <span class="tooltip-icon tooltip-heading" tabindex="0">
-        <button type="button">
-          <svg fill="none" height="14" stroke="#888" stroke-width="2" viewBox="0 0 24 24" width="14">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="12" y1="16" x2="12" y2="12"/>
-            <line x1="12" y1="8" x2="12" y2="8"/>
-          </svg>
-        </button>
-        <span class="tooltip-text">Fully customized match-ready setup.</span>
-      </span>
-    </h2>
-
+    <h2>Measured Strung Specs</h2>
     <div class="spec-item"><span class="label">Weight</span><span class="value">{{ r.measured_strung.weight }}</span></div>
     <div class="spec-item"><span class="label">Swingweight</span><span class="value">{{ r.measured_strung.swingweight }}</span></div>
     <div class="spec-item"><span class="label">Balance</span><span class="value">{{ r.measured_strung.balance }}</span></div>
