@@ -32,17 +32,24 @@
       margin: 0;
     }
 
-    .spec-card section + section{
-      border-top: 1px solid #e6e9ef;
-    }
-
-    /* Erste Section = ehemaliges h1 → kompakt */
+    /* Erste Section (oben kompakt) */
     .spec-card section:first-of-type{
       padding-top: 0;
       margin-top: 0;
     }
 
-    /* Titles ohne linken Balken */
+    /* Letzte Section (unten kompakt) */
+    .spec-card section:last-of-type{
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    /* Trennlinien */
+    .spec-card section + section{
+      border-top: 1px solid #e6e9ef;
+    }
+
+    /* Titel ohne linken Balken */
     .spec-card h2{
       border-left: none !important;
       padding-left: 0 !important;
@@ -110,13 +117,4 @@
   <section>
     <h2>General Specifications</h2>
     <div class="spec-item"><span class="label">Head Size</span><span class="value">{{ r.general.head_size }}</span></div>
-    <div class="spec-item"><span class="label">String Pattern</span><span class="value">{{ r.general.string_pattern }}</span></div>
-    <div class="spec-item"><span class="label">Unstrung Weight</span><span class="value">{{ r.general.unstrung_weight }}</span></div>
-    <div class="spec-item"><span class="label">Stiffness</span><span class="value">{{ r.general.stiffness }}</span></div>
-    <div class="spec-item"><span class="label">Beam</span><span class="value">{{ r.general.beam }}</span></div>
-    <div class="spec-item"><span class="label">Length</span><span class="value">{{ r.general.length }}</span></div>
-  </section>
-
-</div>
-</body>
-</html>
+    <div class="spec-item"><span class="label">String Pattern</span><span class="value
