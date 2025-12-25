@@ -70,8 +70,11 @@
     /* ===== Feinschliff 5: Hover-Zeile (nur Desktop/Pointer) ===== */
     @media (hover:hover){
       .spec-item{
-        border-radius: 8px; /* nur damit hover weich ist */
+        border-radius: 8px;
+        padding: 6px 8px;
+        margin: 0 -8px;
       }
+    
       .spec-item:hover{
         background: rgba(255,255,255,0.03);
       }
