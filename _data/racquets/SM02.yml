@@ -13,9 +13,9 @@ general:
   length: "68.58 cm"
 
 customization:
-  mains_crosses: "Toroline O-Toro 1.23"
+  mains_crosses: "Luxilon Alu Power Ocean Blue 1.25"
   replacement_grip: "Yonex Excel"
-  overgrip: "Wilson Pro"
+  overgrip: "Tourna Tac"
   dampener: "no"
   added_weight: "no"
 
@@ -25,6 +25,6 @@ measured_unstrung:
   balance: "319 mm"
 
 measured_strung:
-  weight: "323.6 g"
-  swingweight: "320.8 kg·cm²"
-  balance: "327 mm"
+  weight: "323.7 g"
+  swingweight: "317.7 kg·cm²"
+  balance: "326 mm"
