@@ -110,6 +110,11 @@
     }
 
     @media (prefers-color-scheme: dark){
+      /* >>> Neu: H2 im Dark Mode weniger dominant <<< */
+      .spec-card section h2{
+        color: rgba(255,255,255,0.82);
+      }
+
       /* Feinschliff 3: Dark Mode Linien weicher */
       .spec-card section + section{
         border-top: 1px solid rgba(255,255,255,0.12);
