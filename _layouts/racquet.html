@@ -72,6 +72,7 @@
     .tooltip-heading{ transform: translateY(1px); }
 
     /* ===== Feinschliff 5: Hover-Zeile (nur Desktop/Pointer) ===== */
+    /* Hover – Light Mode */
     @media (hover:hover){
       .spec-item{
         border-radius: 8px;
@@ -80,7 +81,16 @@
       }
     
       .spec-item:hover{
-        background: rgba(255,255,255,0.03);
+        background: rgba(0,0,0,0.04);
+      }
+    }
+    
+    /* Hover – Dark Mode */
+    @media (prefers-color-scheme: dark){
+      @media (hover:hover){
+        .spec-item:hover{
+          background: rgba(255,255,255,0.05);
+        }
       }
     }
 
