@@ -130,14 +130,20 @@
 
   <!-- ===== Block 0: Metadata ===== -->
   <section>
-    <div class="spec-item"><span class="label">Racquet ID</span><span class="value">{{ r.racket_id }}</span></div>
-    <div class="spec-item"><span class="label">Modell</span><span class="value">{{ r.model }}</span></div>
-    <div class="spec-item"><span class="label">First used</span><span class="value">{{ r.first_used }}</span></div>
+    {% if r.racket_id != "" %}
+      <div class="spec-item"><span class="label">Racquet ID</span><span class="value">{{ r.racket_id }}</span></div>
+    {% endif %}
+    {% if r.model != "" %}
+      <div class="spec-item"><span class="label">Modell</span><span class="value">{{ r.model }}</span></div>
+    {% endif %}
+    {% if r.first_used != "" %}
+      <div class="spec-item"><span class="label">First used</span><span class="value">{{ r.first_used }}</span></div>
+    {% endif %}
 
-    {% if r.owner %}
+    {% if r.owner != "" %}
       <div class="spec-item"><span class="label">Owner</span><span class="value">{{ r.owner }}</span></div>
     {% endif %}
-    {% if r.club %}
+    {% if r.club != "" %}
       <div class="spec-item"><span class="label">Club</span><span class="value">{{ r.club }}</span></div>
     {% endif %}
   </section>
@@ -158,27 +164,33 @@
       </span>
     </h2>
 
-    <div class="spec-item"><span class="label">Weight</span><span class="value">{{ r.measured_unstrung.weight }}</span></div>
+    {% if r.measured_unstrung.weight != "" %}
+      <div class="spec-item"><span class="label">Weight</span><span class="value">{{ r.measured_unstrung.weight }}</span></div>
+    {% endif %}
 
-    <div class="spec-item">
-      <span class="label">
-        <span class="label-with-icon">Swingweight
-          <span aria-describedby="sw-unstrung-tooltip" class="tooltip-icon tooltip-label" tabindex="0">
-            <button aria-label="Informationen zum Schwunggewicht (unbesaitet)" type="button">
-              <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" x2="12" y1="16" y2="12"></line>
-                <line x1="12" x2="12" y1="8" y2="8"></line>
-              </svg>
-            </button>
-            <span class="tooltip-text" id="sw-unstrung-tooltip" role="tooltip">Swingweight is the racquet’s moment of inertia about an axis orthogonal to the racquet’s longitudinal axis, 10 cm above the butt cap. A higher swingweight improves stability and energy transfer on impact, but makes the racquet harder to accelerate.</span>
+    {% if r.measured_unstrung.swingweight != "" %}
+      <div class="spec-item">
+        <span class="label">
+          <span class="label-with-icon">Swingweight
+            <span aria-describedby="sw-unstrung-tooltip" class="tooltip-icon tooltip-label" tabindex="0">
+              <button aria-label="Informationen zum Schwunggewicht (unbesaitet)" type="button">
+                <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" x2="12" y1="16" y2="12"></line>
+                  <line x1="12" x2="12" y1="8" y2="8"></line>
+                </svg>
+              </button>
+              <span class="tooltip-text" id="sw-unstrung-tooltip" role="tooltip">Swingweight is the racquet’s moment of inertia about an axis orthogonal to the racquet’s longitudinal axis, 10 cm above the butt cap. A higher swingweight improves stability and energy transfer on impact, but makes the racquet harder to accelerate.</span>
+            </span>
           </span>
         </span>
-      </span>
-      <span class="value">{{ r.measured_unstrung.swingweight }}</span>
-    </div>
+        <span class="value">{{ r.measured_unstrung.swingweight }}</span>
+      </div>
+    {% endif %}
 
-    <div class="spec-item"><span class="label">Balance</span><span class="value">{{ r.measured_unstrung.balance }}</span></div>
+    {% if r.measured_unstrung.balance != "" %}
+      <div class="spec-item"><span class="label">Balance</span><span class="value">{{ r.measured_unstrung.balance }}</span></div>
+    {% endif %}
   </section>
 
   <!-- ===== Block 2: Measured Strung Specs ===== -->
@@ -197,88 +209,117 @@
       </span>
     </h2>
 
-    <div class="spec-item"><span class="label">Weight</span><span class="value">{{ r.measured_strung.weight }}</span></div>
+    {% if r.measured_strung.weight != "" %}
+      <div class="spec-item"><span class="label">Weight</span><span class="value">{{ r.measured_strung.weight }}</span></div>
+    {% endif %}
 
-    <div class="spec-item">
-      <span class="label">
-        <span class="label-with-icon">Swingweight
-          <span aria-describedby="sw-strung-tooltip" class="tooltip-icon tooltip-label" tabindex="0">
-            <button aria-label="Informationen zum Schwunggewicht (besaitet)" type="button">
-              <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" x2="12" y1="16" y2="12"></line>
-                <line x1="12" x2="12" y1="8" y2="8"></line>
-              </svg>
-            </button>
-            <span class="tooltip-text" id="sw-strung-tooltip" role="tooltip">Swingweight is the racquet’s moment of inertia about an axis orthogonal to the racquet’s longitudinal axis, 10 cm above the butt cap. A higher swingweight improves stability and energy transfer on impact, but makes the racquet harder to accelerate.</span>
+    {% if r.measured_strung.swingweight != "" %}
+      <div class="spec-item">
+        <span class="label">
+          <span class="label-with-icon">Swingweight
+            <span aria-describedby="sw-strung-tooltip" class="tooltip-icon tooltip-label" tabindex="0">
+              <button aria-label="Informationen zum Schwunggewicht (besaitet)" type="button">
+                <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" x2="12" y1="16" y2="12"></line>
+                  <line x1="12" x2="12" y1="8" y2="8"></line>
+                </svg>
+              </button>
+              <span class="tooltip-text" id="sw-strung-tooltip" role="tooltip">Swingweight is the racquet’s moment of inertia about an axis orthogonal to the racquet’s longitudinal axis, 10 cm above the butt cap. A higher swingweight improves stability and energy transfer on impact, but makes the racquet harder to accelerate.</span>
+            </span>
           </span>
         </span>
-      </span>
-      <span class="value">{{ r.measured_strung.swingweight }}</span>
-    </div>
+        <span class="value">{{ r.measured_strung.swingweight }}</span>
+      </div>
+    {% endif %}
 
-    <div class="spec-item"><span class="label">Balance</span><span class="value">{{ r.measured_strung.balance }}</span></div>
+    {% if r.measured_strung.balance != "" %}
+      <div class="spec-item"><span class="label">Balance</span><span class="value">{{ r.measured_strung.balance }}</span></div>
+    {% endif %}
   </section>
 
   <!-- ===== Block 3: Customization ===== -->
   <section>
     <h2>Customization</h2>
-    <div class="spec-item"><span class="label">Mains / Crosses</span><span class="value">{{ r.customization.mains_crosses }}</span></div>
-    <div class="spec-item"><span class="label">Replacement Grip</span><span class="value">{{ r.customization.replacement_grip }}</span></div>
-    <div class="spec-item"><span class="label">Overgrip</span><span class="value">{{ r.customization.overgrip }}</span></div>
-    <div class="spec-item"><span class="label">Dampener</span><span class="value">{{ r.customization.dampener }}</span></div>
-    <div class="spec-item"><span class="label">Added Weight</span><span class="value">{{ r.customization.added_weight }}</span></div>
+    {% if r.customization.mains_crosses != "" %}
+      <div class="spec-item"><span class="label">Mains / Crosses</span><span class="value">{{ r.customization.mains_crosses }}</span></div>
+    {% endif %}
+    {% if r.customization.replacement_grip != "" %}
+      <div class="spec-item"><span class="label">Replacement Grip</span><span class="value">{{ r.customization.replacement_grip }}</span></div>
+    {% endif %}
+    {% if r.customization.overgrip != "" %}
+      <div class="spec-item"><span class="label">Overgrip</span><span class="value">{{ r.customization.overgrip }}</span></div>
+    {% endif %}
+    {% if r.customization.dampener != "" %}
+      <div class="spec-item"><span class="label">Dampener</span><span class="value">{{ r.customization.dampener }}</span></div>
+    {% endif %}
+    {% if r.customization.added_weight != "" %}
+      <div class="spec-item"><span class="label">Added Weight</span><span class="value">{{ r.customization.added_weight }}</span></div>
+    {% endif %}
   </section>
 
   <!-- ===== Block 4: General Specifications ===== -->
   <section>
     <h2>General Specifications</h2>
-    <div class="spec-item"><span class="label">Head Size</span><span class="value">{{ r.general.head_size }}</span></div>
-    <div class="spec-item"><span class="label">String Pattern</span><span class="value">{{ r.general.string_pattern }}</span></div>
 
-    <div class="spec-item">
-      <span class="label">
-        <span class="label-with-icon">Unstrung Weight
-          <span aria-describedby="uw-tooltip" class="tooltip-icon tooltip-label" tabindex="0">
-            <button aria-label="Informationen zum unbesaiteten Gewicht" type="button">
-              <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" x2="12" y1="16" y2="12"></line>
-                <line x1="12" x2="12" y1="8" y2="8"></line>
-              </svg>
-            </button>
-            <span class="tooltip-text" id="uw-tooltip" role="tooltip">Factory specification only. Actual weight may vary due to manufacturing tolerances (±7 g typical).</span>
+    {% if r.general.head_size != "" %}
+      <div class="spec-item"><span class="label">Head Size</span><span class="value">{{ r.general.head_size }}</span></div>
+    {% endif %}
+    {% if r.general.string_pattern != "" %}
+      <div class="spec-item"><span class="label">String Pattern</span><span class="value">{{ r.general.string_pattern }}</span></div>
+    {% endif %}
+
+    {% if r.general.unstrung_weight != "" %}
+      <div class="spec-item">
+        <span class="label">
+          <span class="label-with-icon">Unstrung Weight
+            <span aria-describedby="uw-tooltip" class="tooltip-icon tooltip-label" tabindex="0">
+              <button aria-label="Informationen zum unbesaiteten Gewicht" type="button">
+                <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" x2="12" y1="16" y2="12"></line>
+                  <line x1="12" x2="12" y1="8" y2="8"></line>
+                </svg>
+              </button>
+              <span class="tooltip-text" id="uw-tooltip" role="tooltip">Factory specification only. Actual weight may vary due to manufacturing tolerances (±7 g typical).</span>
+            </span>
           </span>
         </span>
-      </span>
-      <span class="value">{{ r.general.unstrung_weight }}</span>
-    </div>
+        <span class="value">{{ r.general.unstrung_weight }}</span>
+      </div>
+    {% endif %}
 
-    <div class="spec-item">
-      <span class="label">
-        <span class="label-with-icon">Stiffness
-          <span aria-describedby="stiffness-tooltip" class="tooltip-icon tooltip-label" tabindex="0">
-            <button aria-label="Informationen zur Steifigkeit" type="button">
-              <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" x2="12" y1="16" y2="12"></line>
-                <line x1="12" x2="12" y1="8" y2="8"></line>
-              </svg>
-            </button>
-            <span class="tooltip-text" id="stiffness-tooltip" role="tooltip">Measured by Tennis Warehouse University (TWU). Babolat RA scale – higher values indicate a stiffer frame and less flex at impact.</span>
+    {% if r.general.stiffness != "" %}
+      <div class="spec-item">
+        <span class="label">
+          <span class="label-with-icon">Stiffness
+            <span aria-describedby="stiffness-tooltip" class="tooltip-icon tooltip-label" tabindex="0">
+              <button aria-label="Informationen zur Steifigkeit" type="button">
+                <svg fill="none" height="14" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" x2="12" y1="16" y2="12"></line>
+                  <line x1="12" x2="12" y1="8" y2="8"></line>
+                </svg>
+              </button>
+              <span class="tooltip-text" id="stiffness-tooltip" role="tooltip">Measured by Tennis Warehouse University (TWU). Babolat RA scale – higher values indicate a stiffer frame and less flex at impact.</span>
+            </span>
           </span>
         </span>
-      </span>
-      <span class="value">{{ r.general.stiffness }}</span>
-    </div>
+        <span class="value">{{ r.general.stiffness }}</span>
+      </div>
+    {% endif %}
 
-    <div class="spec-item"><span class="label">Beam</span><span class="value">{{ r.general.beam }}</span></div>
-    <div class="spec-item"><span class="label">Length</span><span class="value">{{ r.general.length }}</span></div>
+    {% if r.general.beam != "" %}
+      <div class="spec-item"><span class="label">Beam</span><span class="value">{{ r.general.beam }}</span></div>
+    {% endif %}
+    {% if r.general.length != "" %}
+      <div class="spec-item"><span class="label">Length</span><span class="value">{{ r.general.length }}</span></div>
+    {% endif %}
   </section>
 
   <!-- ===== Block 5: My Other Racquets ===== -->
   {% assign my_owner = r.owner %}
-  {% if my_owner %}
+  {% if my_owner != "" %}
     {% assign has_other = false %}
 
     {% for item in site.data.racquets %}
