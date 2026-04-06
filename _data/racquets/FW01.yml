@@ -13,18 +13,18 @@ general:
   length: "68.58 cm"
 
 customization:
-  mains_crosses: "Yonex Poly Tour Pro 1.25"
+  mains_crosses: "Solinco Confidential Soft 1.25"
   replacement_grip: "Yonex Excel Pro"
   overgrip: "Wilson Pro"
   dampener: "Yonex Vibration Stopper 5"
   added_weight: "no"
 
 measured_unstrung:
-  weight: "298.6 g"
-  swingweight: "285.0 kg·cm²"
+  weight: "299.0 g"
+  swingweight: "284.8 kg·cm²"
   balance: "320 mm"
 
 measured_strung:
-  weight: "324.2 g"
-  swingweight: "317.6 kg·cm²"
+  weight: "324.5 g"
+  swingweight: "313.3 kg·cm²"
   balance: "328 mm"
