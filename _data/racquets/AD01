@@ -1,0 +1,30 @@
+owner: "Alexandra Dreger"
+club: "TC 1904 Blau-Schwarz Düsseldorf"
+racket_id: "Alex 01"
+model: "Wilson Blade 100L V9"
+first_used: "September 2025"
+
+general:
+  head_size: "100 in²"
+  string_pattern: "16x19"
+  unstrung_weight: "285 g"
+  stiffness: ""
+  beam: ""
+  length: "68.58 cm"
+
+customization:
+  mains_crosses: "Grapplesnake Tour M8 1.25"
+  replacement_grip: "Wilson Pro Performance"
+  overgrip: "Wilson Pro"
+  dampener: "Kirschbaum Vibra Stop"
+  added_weight: "no"
+
+measured_unstrung:
+  weight: "286.7 g"
+  swingweight: "281.4 kg·cm²"
+  balance: "326 mm"
+
+measured_strung:
+  weight: "311.9 g"
+  swingweight: "314.1 kg·cm²"
+  balance: "334 mm"
