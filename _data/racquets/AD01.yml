@@ -9,7 +9,7 @@ general:
   string_pattern: "16x19"
   unstrung_weight: "285 g"
   stiffness: ""
-  beam: ""
+  beam: "22 mm / 22 mm / 22 mm"
   length: "68.58 cm"
 
 customization:
